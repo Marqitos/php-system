@@ -8,7 +8,6 @@ if(!function_exists('hex2bin')) {
 		for($c = 0; $c < strlen($hex); $c += 2)
 			$raw .= chr(hexdec(substr($hex, $c, 2))); 
 		return $raw;
-		
 	}
 }
 
@@ -63,6 +62,20 @@ class System_Guid {
 	// Returns a empty Guid
 	public static function getEmpty() {
 		return new self(str_repeat(chr(0), 16));
+	}
+	
+	public static function tryParse($value, &$guid) {
+		if($value instanceof System_Guid) {
+			$guid = $value;
+			return true;
+		} else {
+			try {
+				$guid = new self($value);
+				return true;
+			} catch(Exception $e) {
+				return false;
+			}
+		}
 	}
 	
 	// Returns a new Guid object

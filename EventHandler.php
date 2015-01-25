@@ -4,7 +4,7 @@ class System_EventHandler {
 	private $event;
 	private $callback;    
 	
-	public function GetEventName() {
+	public function getEventName() {
 		return $this->event->GetName();
 	}    
 	
