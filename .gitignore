@@ -1,3 +1,5 @@
+SyncToy*.dat
+
 #################
 ## Eclipse
 #################
@@ -15,7 +17,6 @@ local.properties
 .classpath
 .settings/
 .loadpath
-SyncToy*.dat
 
 # External tool builders
 .externalToolBuilders/
@@ -28,6 +29,9 @@ SyncToy*.dat
 
 # PDT-specific
 .buildpath
+
+## Dreamweaver
+*.LCK
 
 
 #################
