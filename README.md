@@ -1,3 +1,3 @@
 # README #
 
-Librerías php, similares a los elementos básicos BCL de net framework
+Proporciona una serie de clases, para ofrecer funcionalidades basicas en php, y excepciones contextuales.
