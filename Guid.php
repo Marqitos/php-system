@@ -16,16 +16,15 @@ class NetAddress {
 	
 	public static function getLocalHost() {
 		$address = new NetAddress();
-		try {
+		if(isset($_SERVER['SERVER_NAME']))
 			$address->_name 	= $_SERVER['SERVER_NAME'];
+		if(isset($_SERVER['SERVER_ADDR']))
 			$address->_ip 		= $_SERVER["SERVER_ADDR"];
-		} catch(Exception $e) {
-			
-		}
+
 		return $address;
 	}
 
-  public function __toString() {
+	public function __toString() {
 		return strtolower($this->_name . '/' . $this->_ip);
 	}
 
