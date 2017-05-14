@@ -14,7 +14,7 @@ class System_Uri {
 	private static $defaultPorts = array(
 		'http'	=>	80,
 		'https'	=>	443,
-		'ftp'		=> 	21
+		'ftp'	=> 	21
 	);
 	
 	public function __construct($url) {

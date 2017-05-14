@@ -7,7 +7,7 @@ class System_ArgumentException
   
 	const COR_E_ARGUMENT = 0x80070057;
 	
-	public function __construct($paramName, $message = 'Se ha especificado un argumento no válido', $code = self::COR_E_ARGUMENT) {
+	public function __construct($paramName, $message = 'Se ha especificado un argumento no vÃ¡lido', $code = self::COR_E_ARGUMENT) {
 		parent::__construct($message, $code);
 		$this->_paramName = $paramName;
 	}

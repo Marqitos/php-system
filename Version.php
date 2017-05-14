@@ -17,11 +17,11 @@ class System_Version {
 				$build = $values[2];
 			if(isset($values[3]))
 				$revision = $values[3];
-		} else 
-			$this->_major = intval($major);
-		
-		$this->_minor			= intval($minor);
-		$this->_build			= intval($build);
+		} else
+			$this->_major 		= intval($major);
+
+		$this->_minor		= intval($minor);
+		$this->_build		= intval($build);
 		$this->_revision	= intval($revision);
 	}
 		
@@ -42,8 +42,9 @@ class System_Version {
 	}
 	
 	public function __toString() {
-		return $this->_build != 0 && $this->_revision != 0 ? $this->_major . '.' . $this->_minor . '.' . $this->_build . '.' . $this->_revision:
-																												 $this->_major . '.' . $this->_minor;
+		return ($this->_build != 0 && $this->_revision != 0)
+			? $this->_major . '.' . $this->_minor . '.' . $this->_build . '.' . $this->_revision
+			: $this->_major . '.' . $this->_minor;
 	}
 	
 }

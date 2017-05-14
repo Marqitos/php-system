@@ -1,7 +1,5 @@
 <?php
 
-require_once 'System/Random.php';
-
 if(!function_exists('hex2bin')) {
 	function hex2bin($hex) {
 		$raw 		= '';
@@ -14,7 +12,7 @@ if(!function_exists('hex2bin')) {
 class NetAddress {
 
 	private $_name 		= 'localhost';
-	private $_ip 			= '127.0.0.1';
+	private $_ip 		= '127.0.0.1';
 	
 	public static function getLocalHost() {
 		$address = new NetAddress();
@@ -48,7 +46,7 @@ class System_Guid {
 					$this->raw = $this->createRaw($value);
 				} catch(Exception $e) {
 					require_once 'ArgumentOutOfRangeException.php';
-					throw new System_ArgumentOutOfRangeException('value', 'Se ha especificado una cadena GUID no v·lida', $value);
+					throw new System_ArgumentOutOfRangeException('value', 'Se ha especificado una cadena GUID no v√°lida', $value);
 				}
 			}
 		} elseif($value instanceof System_Guid) {
@@ -116,6 +114,8 @@ class System_Guid {
 	
 	// Returns a new raw value
 	protected static function getNewRaw() {
+		require_once 'DateTime.php';
+		require_once 'Random.php';
 		$address = NetAddress::getLocalHost();
 		$value = $address . ':' . System_DateTime::NowMillisecond() . ':' . System_Random::nextLong();
 		return self::createRaw(md5($value));
@@ -124,11 +124,7 @@ class System_Guid {
 	// Returns the raw value from a guid string
 	protected static function createRaw($value) {
 		$value	= str_replace('-', '', $value);
-		try {
-			return @hex2bin($value);
-		} catch(Exception $ex) {
-			return false;
-		}
+		return @hex2bin($value);
 	}
 	
 }
