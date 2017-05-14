@@ -76,7 +76,7 @@ class System_Guid {
 	}
 	
 	// Returns a new Guid object
-	public static function NewGuid() {
+	public static function newGuid() {
 		return new self(self::getNewRaw());
 	}
 	
