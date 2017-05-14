@@ -17,5 +17,9 @@ class System_ArgumentOutOfRangeException
 	public function getActualValue() {
 		return $this->_actualValue;
 	}
+
+	public function getTypeValue() {
+		return gettype($this->_actualValue);
+	}
 	
 }

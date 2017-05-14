@@ -15,6 +15,9 @@ class System_Net_WebException
           case 404:
             $message = 'El documento no ha sido encontrado';
             break;
+          case 500:
+            $message = 'Error interno de la aplicación';
+            break;
         }
       }
       parent::__construct($message);
