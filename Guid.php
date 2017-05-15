@@ -36,7 +36,7 @@ class System_Guid {
 	protected $raw;
 	
 	// Create a guid object with a specific value
-  public function __construct($value) {
+	public function __construct($value) {
 		if(is_string($value)) {
 			if(strlen($value) == 16) {
 				$this->raw = $value;
@@ -123,7 +123,12 @@ class System_Guid {
 	// Returns the raw value from a guid string
 	protected static function createRaw($value) {
 		$value	= str_replace('-', '', $value);
-		return @hex2bin($value);
+		$raw = @hex2bin($value);
+		if(strlen($raw) != 16) {
+			require_once 'ArgumentOutOfRangeException.php';
+			throw new System_ArgumentOutOfRangeException('value', 'Se ha especificado una cadena GUID no válida', $value);
+		}
+		return $raw;
 	}
 	
 }
