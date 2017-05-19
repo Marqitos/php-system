@@ -19,10 +19,10 @@ abstract class System_Configurable_Abstract
 	* @param array $options Array asociativos de opciones
 	*/
 	public function __construct(array $options) {
-	global $environment;
-	$this->options = $this->getDefaultOptions($environment->getStatus());
-	foreach($options as $key => $value)
-		$this->setOption($key, $value);
+		global $environment;
+		$this->options = $this->getDefaultOptions($environment->getStatus());
+		foreach($options as $key => $value)
+			$this->setOption($key, $value);
 	}
 
 	/**
@@ -34,7 +34,7 @@ abstract class System_Configurable_Abstract
 	*/
 	protected function registerOptionChanging($callback) {
 		if(is_callable($callback))
-			$this->_callbacks['onChanging'] = $callback;
+			$this->_callbacks['onChanging'][] = $callback;
 		else {
 			require_once 'System/ArgumentOutOfRangeException.php';
 			throw new System_ArgumentOutOfRangeException('callback', 'Se esperaba un delegado', $callback);
@@ -50,7 +50,7 @@ abstract class System_Configurable_Abstract
 	*/
 	protected function registerOptionChanged($callback) {
 		if(is_callable($callback))
-			$this->_callbacks['onChanged'] = $callback;
+			$this->_callbacks['onChanged'][] = $callback;
 		else {
 			require_once 'System/ArgumentOutOfRangeException.php';
 			throw new System_ArgumentOutOfRangeException('callback', 'Se esperaba un delegado', $callback);
@@ -81,20 +81,20 @@ abstract class System_Configurable_Abstract
 	* @return void
 	*/
 	public function setOption($name, $value) {
-	if (!is_string($name)) {
-		require_once 'System/ArgumentOutOfRangeException.php';
-		throw new System_ArgumentOutOfRangeException('name', "Se esperaba una cadena", $name);
-	}
-	$name = strtolower($name);
-	if (array_key_exists($name, $this->options) &&
-		$this->options[$name] !== $value &&
-		$this->raiseOptionsChanging($name, $value)) {
-		
-		if(is_array($this->options[$name]) && is_array($value))
-			$value = array_replace_recursive($this->options[$name], $value);
-		$this->options[$name] = $value;
-		$this->raiseOptionChanged($name);
-	}
+		if (!is_string($name)) {
+			require_once 'System/ArgumentOutOfRangeException.php';
+			throw new System_ArgumentOutOfRangeException('name', "Se esperaba una cadena", $name);
+		}
+		$name = strtolower($name);
+		if (array_key_exists($name, $this->options) &&
+			$this->options[$name] !== $value &&
+			$this->raiseOptionChanging($name, $value)) {
+			
+			if(is_array($this->options[$name]) && is_array($value))
+				$value = array_replace_recursive($this->options[$name], $value);
+			$this->options[$name] = $value;
+			$this->raiseOptionChanged($name);
+		}
 	}
 
 	public function getOptions() {
