@@ -1,6 +1,8 @@
 <?php
 
-class System_String {
+namespace System;
+
+class String {
   /**
 	* Determina si el principio de una cadena coincide con una cadena especificada.
 	*

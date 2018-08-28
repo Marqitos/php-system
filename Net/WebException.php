@@ -1,12 +1,17 @@
 <?php
 
-class System_Net_WebException
-  extends System_InvalidOperationException {
+namespace System\Net;
+
+use System\InvalidOperationException;
+
+require_once 'System/InvalidOperationException.php';
+
+class WebException extends InvalidOperationException {
     
-    private $_status;
+    private $status;
     
     public function __construct($status, $message = null) {
-      $this->_status = intval($status);
+      $this->status = intval($status);
       if($message == null) {
         switch ($this->_status) {
           case 403:
@@ -24,7 +29,7 @@ class System_Net_WebException
     }
     
     public function getStatus() {
-      return $this->_status;
+      return $this->status;
     }
     
   }
