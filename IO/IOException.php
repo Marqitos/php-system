@@ -1,11 +1,13 @@
 <?php
-require_once 'System/Exception.php';
+
+namespace System\IO;
+
+use Exception;
+
 /*
  * Excepción que es lanzada cuando se produce un error de E/S.
  */
- 
-class System_IO_IOException
-	extends Exception {
+ class IOException extends Exception {
 	
 	const COR_E_IO = 0x80131620;
 	const COR_E_ENDOFSTREAM = 0x80070026;
