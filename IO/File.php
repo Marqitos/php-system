@@ -1,48 +1,47 @@
 <?php
+namespace System\IO;
 
-class System_IO_File {
+use function is_writable;
+use function is_readable;
+use function fclose;
+use function fopen;
 
-   /**
-     * Escribe el contenido en un archivo
-     *
-     * @param  string $filename Nombre completo del archivo
-     * @param  string $string Contenido a almacenar
-     * @param  int $mode permisos del archivo 
-     * @return mixed FALSE en caso de error, sino el numero de bytes escritos
-     */
-    public static function Write($filename, $string, $mode = 0600) {
-        $result = false;
-        $f = @fopen($filename, 'ab+');
-        if ($f) {
-            @flock($f, LOCK_EX);
-            fseek($f, 0);
-            ftruncate($f, 0);
-            $result = @fwrite($f, $string);
-            @flock($f, LOCK_UN);
-            @fclose($f);
-            @chmod($filename, $mode);
-        }
-        return $result;
+abstract class File {
+
+    protected $filename;
+
+    public function __construct($filename) {
+        $this->filename = $filename;
     }
 
-   /**
-     * Devuelve el contenido de un archivo
+    public abstract function Write($string, $mode = 0600);
+    public abstract function Read();
+
+    /**
+     * Returns TRUE if the $filename is readable, or FALSE otherwise.
+     * This function uses the PHP include_path, where PHP's is_readable()
+     * does not.
      *
-     * @param  string $filename Nombre completo del archivo
-     * @return string Contenido del archivo (o FALSE en caso de error)
+     * Note : this method comes from Zend_Loader (see #ZF-2891 for details)
+     *
+     * @param string   $filename
+     * @return boolean
      */
-    public static function Read($filename) {
-        $result = false;
-        if (!is_file($filename))
+    public  static function IsReadable($filename) {
+        if (!$fh = @fopen($filename, 'r', true))
             return false;
-        $f = @fopen($filename, 'rb');
-        if ($f) {
-            @flock($f, LOCK_SH);
-            $result = stream_get_contents($f);
-            @flock($f, LOCK_UN);
-            @fclose($f);
-        }
-        return $result;
+        @fclose($fh);
+        return true;
     }
+
+   /**
+    * Verify if the given temporary directory is readable and writable
+    *
+    * @param $dir temporary directory
+    * @return boolean true if the directory is ok
+    */
+    public static function IsGoodTmpDir($dir) {
+        return is_readable($dir) && is_writable($dir);
+    }    
 
 }
