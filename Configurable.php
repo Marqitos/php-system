@@ -12,7 +12,7 @@ use function is_array;
 use function is_callable;
 use function is_string;
 
-require_once 'System\Configurable\ConfigurableInterface.php';
+require_once 'System/Configurable/ConfigurableInterface.php';
 
 // Implementa las funcionalidades básicas un objeto que se puede configurar al inicializar
 abstract class Configurable implements ConfigurableInterface {
@@ -48,7 +48,7 @@ abstract class Configurable implements ConfigurableInterface {
 		if(is_callable($callback))
 			$this->callbacks['onChanging'][] = $callback;
 		else {
-			require_once 'System\ArgumentOutOfRangeException.php';
+			require_once 'System/ArgumentOutOfRangeException.php';
 			throw new ArgumentOutOfRangeException('callback', 'Se esperaba un delegado', $callback);
 		}
 	}
@@ -64,7 +64,7 @@ abstract class Configurable implements ConfigurableInterface {
 		if(is_callable($callback))
 			$this->callbacks['onChanged'][] = $callback;
 		else {
-			require_once 'System\ArgumentOutOfRangeException.php';
+			require_once 'System/ArgumentOutOfRangeException.php';
 			throw new ArgumentOutOfRangeException('callback', 'Se esperaba un delegado', $callback);
 		}
 	}
@@ -94,7 +94,7 @@ abstract class Configurable implements ConfigurableInterface {
 	*/
 	public function setOption($name, $value) {
 		if (!is_string($name)) {
-			require_once 'System\ArgumentOutOfRangeException.php';
+			require_once 'System/ArgumentOutOfRangeException.php';
 			throw new ArgumentOutOfRangeException('name', "Se esperaba una cadena", $name);
 		}
 		$name = strtolower($name);
