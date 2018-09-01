@@ -1,6 +1,7 @@
 <?php
 
 namespace System\Collections;
+
 use Exception;
  
 /*
@@ -8,11 +9,11 @@ use Exception;
  * de una colección no coincide con ninguna clave de la colección.
  */
 class KeyNotFoundException extends Exception {
-	
-	const COR_E_DLLNOTFOUND = 0x80131577;
-	
-	public function __construct($message = 'La clave especificada no existe', $code = self::COR_E_DLLNOTFOUND) {
-		parent::__construct($message, $code);
-	}
-	
+    
+    const COR_E_DLLNOTFOUND = 0x80131577;
+    
+    public function __construct($message = 'La clave especificada no existe', $code = self::COR_E_DLLNOTFOUND) {
+        parent::__construct($message, $code);
+    }
+    
 }

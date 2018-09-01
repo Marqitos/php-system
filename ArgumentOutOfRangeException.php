@@ -1,6 +1,7 @@
 <?php
 
 namespace System;
+
 use System\ArgumentException;
 use function gettype;
 

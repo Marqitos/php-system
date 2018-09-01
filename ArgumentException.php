@@ -1,6 +1,7 @@
 <?php
 
 namespace System;
+
 use Exception;
 
 require_once 'ArgumentException.php';
