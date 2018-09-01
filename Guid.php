@@ -1,36 +1,19 @@
 <?php
 
-if(!function_exists('hex2bin')) {
-	function hex2bin($hex) {
-		$raw 		= '';
-		for($c = 0; $c < strlen($hex); $c += 2)
-			$raw .= chr(hexdec(substr($hex, $c, 2))); 
-		return $raw;
-	}
-}
+namespace System;
 
-class NetAddress {
+use Exception;
+use System\ArgumentOutOfRangeException;
+use function explode;
+use function microtime;
+use function rand;
+use function strtoupper;
+use function str_repeat;
+use function substr;
+use function sprintf;
+use function ord;
 
-	private $_name 		= 'localhost';
-	private $_ip 		= '127.0.0.1';
-	
-	public static function getLocalHost() {
-		$address = new NetAddress();
-		if(isset($_SERVER['SERVER_NAME']))
-			$address->_name 	= $_SERVER['SERVER_NAME'];
-		if(isset($_SERVER['SERVER_ADDR']))
-			$address->_ip 		= $_SERVER["SERVER_ADDR"];
-
-		return $address;
-	}
-
-	public function __toString() {
-		return strtolower($this->_name . '/' . $this->_ip);
-	}
-
-}
-
-class System_Guid {
+class Guid {
 
 	// guid value
 	protected $raw;
@@ -45,14 +28,14 @@ class System_Guid {
 					$this->raw = $this->createRaw($value);
 				} catch(Exception $e) {
 					require_once 'ArgumentOutOfRangeException.php';
-					throw new System_ArgumentOutOfRangeException('value', 'Se ha especificado una cadena GUID no válida', $value);
+					throw new ArgumentOutOfRangeException('value', 'Se ha especificado una cadena GUID no válida', $value);
 				}
 			}
-		} elseif($value instanceof System_Guid) {
+		} elseif($value instanceof Guid) {
 			$this->raw = $value->getRaw();
 		} else {
 			require_once 'ArgumentOutOfRangeException.php';
-			throw new System_ArgumentOutOfRangeException('value', 'Se esperaba una cadena', $value);
+			throw new ArgumentOutOfRangeException('value', 'Se esperaba una cadena', $value);
 		}
 	}
 	
@@ -62,7 +45,7 @@ class System_Guid {
 	}
 	
 	public static function tryParse($value, &$guid) {
-		if($value instanceof System_Guid) {
+		if($value instanceof Guid) {
 			$guid = $value;
 			return true;
 		} else {
@@ -81,7 +64,7 @@ class System_Guid {
 	}
 	
 	// Returns if a guid is null or empty
-	public static function isEmpty(System_Guid $id = null) {
+	public static function isEmpty(Guid $id = null) {
 		return $id == null ||
 			$id->raw == str_repeat(chr(0), 16);
 	}
@@ -114,9 +97,8 @@ class System_Guid {
 	// Returns a new raw value
 	protected static function getNewRaw() {
 		require_once 'DateTime.php';
-		require_once 'Random.php';
-		$address = NetAddress::getLocalHost();
-		$value = $address . ':' . System_DateTime::NowMillisecond() . ':' . System_Random::nextLong();
+		$address = self::getNetAddressString();
+		$value = $address . ':' . self::getNowMillisecond() . ':' . self::getRandomLong();
 		return self::createRaw(md5($value));
 	}
 	
@@ -126,9 +108,29 @@ class System_Guid {
 		$raw = @hex2bin($value);
 		if(strlen($raw) != 16) {
 			require_once 'ArgumentOutOfRangeException.php';
-			throw new System_ArgumentOutOfRangeException('value', 'Se ha especificado una cadena GUID no válida', $value);
+			throw new ArgumentOutOfRangeException('value', 'Se ha especificado una cadena GUID no válida', $value);
 		}
 		return $raw;
 	}
-	
+
+	public static function getNetAddressString() {
+		$name = isset($_SERVER['SERVER_NAME'])
+			? $_SERVER['SERVER_NAME']
+			: 'localhost';
+		$ip = isset($_SERVER['SERVER_ADDR'])
+			? $_SERVER["SERVER_ADDR"]
+			: '127.0.0.1';
+		return $name . '/' . $ip;
+	}
+
+	public static function getRandomLong() {
+		$tmp = rand(0,1)?'-':'';
+		return $tmp.rand(1000, 9999).rand(1000, 9999).rand(1000, 9999).rand(100, 999).rand(100, 999);
+	}
+
+	public static function getNowMillisecond() 	{
+		list($usec, $sec) = explode(" ", microtime());
+		return $sec.substr($usec, 2, 3);
+	}
+
 }
