@@ -4,14 +4,16 @@ namespace System;
 
 use Exception;
 use System\ArgumentOutOfRangeException;
+use function chr;
 use function explode;
 use function microtime;
+use function ord;
 use function rand;
+use function sprintf;
 use function strtoupper;
 use function str_repeat;
 use function substr;
-use function sprintf;
-use function ord;
+use function uniqid;
 
 class Guid {
 
@@ -96,10 +98,12 @@ class Guid {
 	
 	// Returns a new raw value
 	protected static function getNewRaw() {
-		require_once 'DateTime.php';
+		/*
 		$address = self::getNetAddressString();
 		$value = $address . ':' . self::getNowMillisecond() . ':' . self::getRandomLong();
 		return self::createRaw(md5($value));
+		*/
+		return self::createRaw(md5(uniqid()));
 	}
 	
 	// Returns the raw value from a guid string
@@ -113,6 +117,7 @@ class Guid {
 		return $raw;
 	}
 
+	/*
 	public static function getNetAddressString() {
 		$name = isset($_SERVER['SERVER_NAME'])
 			? $_SERVER['SERVER_NAME']
@@ -132,5 +137,6 @@ class Guid {
 		list($usec, $sec) = explode(" ", microtime());
 		return $sec.substr($usec, 2, 3);
 	}
+	*/
 
 }
