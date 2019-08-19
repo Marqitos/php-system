@@ -14,8 +14,9 @@ abstract class File {
         $this->filename = $filename;
     }
 
-    public abstract function Write($string, $mode = 0600);
-    public abstract function Read();
+    public abstract function write($string, $mode = 'ab+', $perm = 0600);
+    public abstract function read($mode = 'rb');
+    public abstract function modify(callable $action, $perm = 0600);
 
     /**
      * Returns TRUE if the $filename is readable, or FALSE otherwise.
@@ -27,7 +28,7 @@ abstract class File {
      * @param string   $filename
      * @return boolean
      */
-    public  static function IsReadable($filename) {
+    public  static function isReadable($filename) {
         if (!$fh = @fopen($filename, 'r', true))
             return false;
         @fclose($fh);
@@ -40,7 +41,7 @@ abstract class File {
     * @param $dir temporary directory
     * @return boolean true if the directory is ok
     */
-    public static function IsGoodTmpDir($dir) {
+    public static function isGoodTmpDir($dir) {
         return is_readable($dir) && is_writable($dir);
     }    
 

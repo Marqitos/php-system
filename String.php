@@ -4,21 +4,6 @@ namespace System;
 
 class String {
   /**
-	* Determina si el principio de una cadena coincide con una cadena especificada.
-	*
-	* @param string $self Cadena completa
-	* @param string $value Cadena a comparar
-	* @return boolean Es true si value coincide con el principio de esta cadena; en caso contrario, es false.
-	*/
-	public static function startWith($self, $value, $ignoreCase = FALSE) {
-		if($ignoreCase) {
-			$self = strtolower($self);
-			$value = strtolower($value);
-		}
-		return substr($self, 0, strlen($value)) == $value;
-	}
-
-  /**
     * Devuelve una cadena sin caracteres no ASCII ni espacios.
 	*
 	* @param string $text Cadena a transformar

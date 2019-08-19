@@ -13,7 +13,7 @@ class WebException extends InvalidOperationException {
     public function __construct($status, $message = null) {
       $this->status = intval($status);
       if($message == null) {
-        switch ($this->_status) {
+        switch ($this->status) {
           case 403:
             $message = 'Acceso prohibido';
             break;
