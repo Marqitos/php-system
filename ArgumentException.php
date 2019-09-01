@@ -4,8 +4,6 @@ namespace System;
 
 use Exception;
 
-require_once 'ArgumentException.php';
-
 class ArgumentException	extends Exception {
 	
 	private $paramName;
