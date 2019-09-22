@@ -10,7 +10,7 @@ use Exception;
  */
 class KeyNotFoundException extends Exception {
     
-    const COR_E_DLLNOTFOUND = 0x80131577;
+    const COR_E_DLLNOTFOUND = 80131577; //0x80131577;
     
     public function __construct($message = 'La clave especificada no existe', $code = self::COR_E_DLLNOTFOUND) {
         parent::__construct($message, $code);
