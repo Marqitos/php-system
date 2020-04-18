@@ -1,15 +1,16 @@
 <?php
 
-class System_Text_RegularExressions_Regex {
+namespace System\Text\RegularExpressions;
+
+class Regex {
 	
-	private $_pattern;
-	private $_caseSensitive;
+	private $pattern;
+	private $caseSensitive;
 	
 	public function __construct($pattern, $caseSensitive = true) {
-		$this->_pattern = $pattern;
-		$this->_caseSensitive = $caseSensitive;
+		$this->pattern = $pattern;
+		$this->caseSensitive = $caseSensitive;
 	}
-	
 	
 	public static function Escape($string) {
 		
