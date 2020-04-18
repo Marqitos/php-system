@@ -20,7 +20,7 @@ class FileSystem extends File {
      * Devuelve el contenido de un archivo
      *
      * @param  string $mode Especifica el tipo de acceso que se necesita para el flujo
-     * @return string Contenido del archivo (o FALSE en caso de error)
+     * @return string Contenido del archivo (o false en caso de error)
      */
     public function read($mode = 'rb') {
         if (!is_file($this->filename))
@@ -42,7 +42,7 @@ class FileSystem extends File {
      *
      * @param  string $string Contenido a almacenar
      * @param  string $mode Especifica el tipo de acceso que se necesita para el flujo
-     * @param int $perm Consiste en tres componentes numéricos octales que especifican las restricciones de acceso para el propietario, el grupo de usuarios al que pertenece el propietario, y para todos los demás
+     * @param  int $perm Consiste en tres componentes numéricos octales que especifican las restricciones de acceso para el propietario, el grupo de usuarios al que pertenece el propietario, y para todos los demás
      * @return mixed false en caso de error, sino el numero de bytes escritos
      */
     public function write($string, $mode = 'ab+', $perm = 0600) {
