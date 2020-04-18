@@ -2,8 +2,9 @@
 
 namespace System;
 
-use System\Configurable\ConfigurableInterface;
 use System\ArgumentOutOfRangeException;
+use System\Configurable\ConfigurableInterface;
+use System\Localization\Resources;
 
 use function array_key_exists;
 use function array_replace_recursive;
@@ -11,6 +12,7 @@ use function call_user_func;
 use function is_array;
 use function is_callable;
 use function is_string;
+use function strtolower;
 
 require_once 'System/Configurable/ConfigurableInterface.php';
 
@@ -44,13 +46,8 @@ abstract class Configurable implements ConfigurableInterface {
 	* @throws System\ArgumentOutOfRangeException
 	* @return void
 	*/
-	protected function registerOptionChanging($callback) {
-		if(is_callable($callback))
-			$this->callbacks['onChanging'][] = $callback;
-		else {
-			require_once 'System/ArgumentOutOfRangeException.php';
-			throw new ArgumentOutOfRangeException('callback', 'Se esperaba un delegado', $callback);
-		}
+	protected function registerOptionChanging(callable $callback) {
+		$this->callbacks['onChanging'][] = $callback;
 	}
 
 	/**
@@ -60,13 +57,8 @@ abstract class Configurable implements ConfigurableInterface {
 	* @throws System\ArgumentOutOfRangeException
 	* @return void
 	*/
-	protected function registerOptionChanged($callback) {
-		if(is_callable($callback))
-			$this->callbacks['onChanged'][] = $callback;
-		else {
-			require_once 'System/ArgumentOutOfRangeException.php';
-			throw new ArgumentOutOfRangeException('callback', 'Se esperaba un delegado', $callback);
-		}
+	protected function registerOptionChanged(callable $callback) {
+		$this->callbacks['onChanged'][] = $callback;
 	}
 
 	private function raiseOptionChanged($optionName) {
@@ -95,7 +87,7 @@ abstract class Configurable implements ConfigurableInterface {
 	public function setOption($name, $value) {
 		if (!is_string($name)) {
 			require_once 'System/ArgumentOutOfRangeException.php';
-			throw new ArgumentOutOfRangeException('name', "Se esperaba una cadena", $name);
+			throw new ArgumentOutOfRangeException('name', Resources::ArgumentOutOfRangeExceptionStringExpected, $name);
 		}
 		$name = strtolower($name);
 		if (array_key_exists($name, $this->options) &&

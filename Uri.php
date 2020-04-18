@@ -1,6 +1,16 @@
 <?php
 
-class System_Uri {
+namespace System;
+
+use System\ArgumentOutOfRangeException;
+use System\Localization\Resources;
+
+use function array_key_exists;
+use function is_array;
+use function is_string;
+use function parse_url;
+
+class Uri {
 	private $data; // array()
 //		scheme - e.g. http
 //		host
@@ -11,20 +21,22 @@ class System_Uri {
 //		query - after the question mark ?
 //		fragment - after the hashmark #	
 
-	private static $defaultPorts = array(
+	private static $defaultPorts = [
 		'http'	=>	80,
 		'https'	=>	443,
 		'ftp'	=> 	21
-	);
+	];
 	
 	public function __construct($url) {
 		if(is_string($url)) {
 			$this->data = parse_url($url);
-			if(!$this->data)
-				throw new System_ArgumentOutOfRangeException('url', 'Se esperaba una url válida', $url);
+			if(!$this->data) {
+				require_once 'ArgumentOutOfRangeException.php';
+				throw new ArgumentOutOfRangeException('url', Resources::ArgumentOutOfRangeExceptionUrlExtected, $url);
+			}
 		} elseif(is_array($url)) {
 			$this->data = $url;
-		} elseif(is_a($url, 'System_Uri')) {
+		} elseif($url instanceof Uri) {
 			$this->data = array_merge($url->data);
 		}
 	}
@@ -58,7 +70,7 @@ class System_Uri {
 	
 	public static function isDefaultPort($scheme, $port) {
 		return 	!array_key_exists($scheme, self::defaultPorts) ||
-						self::$defaultPorts[$scheme] == $port;
+				self::$defaultPorts[$scheme] == $port;
 	}
 	
 	
