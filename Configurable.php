@@ -16,7 +16,9 @@ use function strtolower;
 
 require_once 'System/Configurable/ConfigurableInterface.php';
 
-// Implementa las funcionalidades básicas un objeto que se puede configurar al inicializar
+/**
+ * Implementa las funcionalidades básicas un objeto que se puede configurar al inicializar
+ */
 abstract class Configurable implements ConfigurableInterface {
 
 	/// Campos
@@ -101,8 +103,21 @@ abstract class Configurable implements ConfigurableInterface {
 		}
 	}
 
-	public function getOptions() {
+    /**
+     * Obtiene toda la configuración
+     * @return array Datos de configuración actuales
+     */
+	public function getOptions() : array {
 		return $this->options;
 	}
+
+	/**
+     * Obtiene la configuración por defecto para un entorno especifico
+	 * 
+     * @param string $environment Entorno de trabajo
+     * @return array Datos de configuración por defecto
+     */
+    abstract public function getDefaultOptions($environment) : array;
+
 
 }
