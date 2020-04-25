@@ -3,9 +3,13 @@
 namespace System\Net;
 
 use System\InvalidOperationException;
+use System\Localization\Resources;
 
 require_once 'System/InvalidOperationException.php';
 
+/**
+ * Excepción que se produce cuando ocurre un error al acceder a la red mediante un protocolo acoplable.
+ */
 class WebException extends InvalidOperationException {
     
     private $status;
@@ -15,13 +19,13 @@ class WebException extends InvalidOperationException {
       if($message == null) {
         switch ($this->status) {
           case 403:
-            $message = 'Acceso prohibido';
+            $message = Resources::WebException403Message;
             break;
           case 404:
-            $message = 'El documento no ha sido encontrado';
+            $message = Resources::WebException404Message;
             break;
-          case 500:
-            $message = 'Error interno de la aplicación';
+          default:
+            $message = Resources::WebException500Message;
             break;
         }
       }

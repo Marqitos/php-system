@@ -4,12 +4,17 @@ namespace System;
 
 use Exception;
 use System\ArgumentOutOfRangeException;
+use System\Localization\Resources;
+
 use function chr;
 use function explode;
+use function is_string;
+use function md5;
 use function microtime;
 use function ord;
 use function rand;
 use function sprintf;
+use function strlen;
 use function strtoupper;
 use function str_repeat;
 use function substr;
@@ -30,14 +35,14 @@ class Guid {
 					$this->raw = $this->createRaw($value);
 				} catch(Exception $e) {
 					require_once 'ArgumentOutOfRangeException.php';
-					throw new ArgumentOutOfRangeException('value', 'Se ha especificado una cadena GUID no válida', $value);
+					throw new ArgumentOutOfRangeException('value', Resources::ArgumentOutOfRangeExceptionGUIDStringExpected, $value);
 				}
 			}
 		} elseif($value instanceof Guid) {
 			$this->raw = $value->getRaw();
 		} else {
 			require_once 'ArgumentOutOfRangeException.php';
-			throw new ArgumentOutOfRangeException('value', 'Se esperaba una cadena', $value);
+			throw new ArgumentOutOfRangeException('value', Resources::ArgumentOutOfRangeExceptionStringExpected, $value);
 		}
 	}
 	
@@ -98,11 +103,6 @@ class Guid {
 	
 	// Returns a new raw value
 	protected static function getNewRaw() {
-		/*
-		$address = self::getNetAddressString();
-		$value = $address . ':' . self::getNowMillisecond() . ':' . self::getRandomLong();
-		return self::createRaw(md5($value));
-		*/
 		return self::createRaw(md5(uniqid()));
 	}
 	
@@ -112,31 +112,9 @@ class Guid {
 		$raw = @hex2bin($value);
 		if(strlen($raw) != 16) {
 			require_once 'ArgumentOutOfRangeException.php';
-			throw new ArgumentOutOfRangeException('value', 'Se ha especificado una cadena GUID no válida', $value);
+			throw new ArgumentOutOfRangeException('value', Resources::ArgumentOutOfRangeExceptionGUIDStringExpected, $value);
 		}
 		return $raw;
 	}
-
-	/*
-	public static function getNetAddressString() {
-		$name = isset($_SERVER['SERVER_NAME'])
-			? $_SERVER['SERVER_NAME']
-			: 'localhost';
-		$ip = isset($_SERVER['SERVER_ADDR'])
-			? $_SERVER["SERVER_ADDR"]
-			: '127.0.0.1';
-		return $name . '/' . $ip;
-	}
-
-	public static function getRandomLong() {
-		$tmp = rand(0,1)?'-':'';
-		return $tmp.rand(1000, 9999).rand(1000, 9999).rand(1000, 9999).rand(100, 999).rand(100, 999);
-	}
-
-	public static function getNowMillisecond() 	{
-		list($usec, $sec) = explode(" ", microtime());
-		return $sec.substr($usec, 2, 3);
-	}
-	*/
 
 }

@@ -2,6 +2,7 @@
 namespace System\IO;
 
 use System\IO\IOException;
+use System\Localization\Resources;
 
 require_once 'System/IO/IOException.php';
 
@@ -11,7 +12,7 @@ require_once 'System/IO/IOException.php';
  
 class DirectoryNotFoundException extends IOException {
 		
-	public function __construct($message = 'No se ha podido encontrar el directorio especificado', $code = self::COR_E_DIRECTORYNOTFOUND) {
+	public function __construct($message = Resources::DirectoryNotFoundExceptionDefaultMessage, $code = self::COR_E_DIRECTORYNOTFOUND) {
 		parent::__construct($message, $code);
 	}
 	

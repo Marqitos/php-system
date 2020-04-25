@@ -3,11 +3,17 @@
 namespace System;
 
 use Exception;
+use System\Localization\Resources;
+
+if (!class_exists(Resources, false)) {
+	require_once 'System/Localization/es.php';
+}
 
 class InvalidOperationException	extends Exception {
-    const COR_E_INVALIDOPERATION = 0x80131509;
+
+    const COR_E_INVALIDOPERATION = 80131509; // 0x80131509;
     
-    public function __contruct($message = 'Se ha producido una operación no permitida', $code = self::COR_E_INVALIDOPERATION) {
+    public function __contruct($message = Resources::InvalidOperationExceptionDefaultMessage, $code = self::COR_E_INVALIDOPERATION) {
         parent::__contruct($message, $code);
     }
   

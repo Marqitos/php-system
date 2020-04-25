@@ -1,6 +1,11 @@
 <?php
-	
-class System_Drawing_Size {
+
+namespace System\Drawing;
+
+/**
+ * Almacena un par numeros, que especifican ancho y alto.
+ */
+class Size {
 	public $width;
 	public $height;
 	

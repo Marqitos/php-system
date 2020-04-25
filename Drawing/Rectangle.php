@@ -1,63 +1,74 @@
 <?php
+
+namespace System\Drawing;
+
+use System\Drawing\Point;
+use System\Drawing\Size;
+use function max;
+use function min;
+
 require_once 'Point.php';
 require_once 'Size.php';
+
+/**
+ * Almacena un conjunto de cuatro números que representan la posición y el tamaño de un rectángulo.
+ */
+class Rectangle {
+	private $location;
+	private $size;
 	
-class System_Drawing_Rectangle {
-	private $_location;
-	private $_size;
-	
-	public function __construct(System_Drawing_Point $location, System_Drawing_Size $size) {
-		$this->_location = $location;
-		$this->_size = $size;
+	public function __construct(Point $location, Size $size) {
+		$this->location = $location;
+		$this->size = $size;
 	}
 	
 	public function getLocation() {
-		return $this->_location;
+		return $this->location;
 	}
 	public function getSize() {
-		return $this->_size;
+		return $this->size;
 	}
 	public function getX() {
-		return $this->_location->x;
+		return $this->location->x;
 	}
 	public function getY() {
-		return $this->_location->y;
+		return $this->location->y;
 	}
 	public function getWidth() {
-		return $this->_size->width;
+		return $this->size->width;
 	}
 	public function getHeight() {
-		return $this->_size->height;
+		return $this->size->height;
 	}
 	
 	public function getLeft() {
-		return $this->_size->width < 0 
-			? $this->_location->x + $this->_size->width
-			: $this->_location->x;
+		return $this->size->width < 0 
+			? $this->location->x + $this->size->width
+			: $this->location->x;
 	}
 	public function getTop() {
-		return $this->_size->height < 0 
-			? $this->_location->y + $this->_size->height
-			: $this->_location->y;
+		return $this->size->height < 0 
+			? $this->location->y + $this->size->height
+			: $this->location->y;
 	}
 	public function getRight() {
-		return $this->_size->width < 0 
-			? $this->_location->x
-			: $this->_location->x + $this->_size->width;
+		return $this->size->width < 0 
+			? $this->location->x
+			: $this->location->x + $this->size->width;
 	}	
 	public function getBottom() {
-		return $this->_size->height < 0 
-			? $this->_location->y
-			: $this->_location->y + $this->_size->height;
+		return $this->size->height < 0 
+			? $this->location->y
+			: $this->location->y + $this->size->height;
 	}
 	
 	public static function fromLTRB($left, $top, $right, $bottom) {
-		$point = new System_Drawing_Point($left, $top);
-		$size = new System_Drawing_Size($right - $left, $bottom - $top);
+		$point = new Point($left, $top);
+		$size = new Size($right - $left, $bottom - $top);
 		return new self($point, $size);
 	}
 	
-	public static function union(System_Drawing_Rectangle $a, System_Drawing_Rectangle $b) {
+	public static function union(Rectangle $a, Rectangle $b) {
 		return self::fromLTRB(
 			min($a->getLeft(), $b->getLeft()),
 			min($a->getTop(), $b->getTop()),

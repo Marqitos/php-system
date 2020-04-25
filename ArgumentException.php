@@ -3,14 +3,19 @@
 namespace System;
 
 use Exception;
+use System\Localization\Resources;
+
+if (!class_exists(Resources, false)) {
+	require_once 'System/Localization/es.php';
+}
 
 class ArgumentException	extends Exception {
 	
 	private $paramName;
   
-	const COR_E_ARGUMENT = 0x80070057;
+	const COR_E_ARGUMENT = 80070057; // 0x80070057;
 	
-	public function __construct($paramName, $message = 'Se ha especificado un argumento no válido', $code = self::COR_E_ARGUMENT) {
+	public function __construct($paramName, $message = Resources::ArgumentExceptionDefaultMessage, $code = self::COR_E_ARGUMENT) {
 		parent::__construct($message, $code);
 		$this->paramName = $paramName;
 	}

@@ -3,6 +3,7 @@
 namespace System\IO;
 
 use System\IO\IOException;
+use System\Localization\Resources;
 
 require_once 'System/IO/IOException.php';
 
@@ -11,7 +12,7 @@ require_once 'System/IO/IOException.php';
  */
 class FileNotFoundException extends IOException {
 	
-	public function __construct($message = 'No se ha podido encontrar el archivos especificado', $code = self::COR_E_FILENOTFOUND) {
+	public function __construct($message = Resources::FileNotFoundExceptionDefaultMessage, $code = self::COR_E_FILENOTFOUND) {
 		parent::__construct($message, $code);
 	}
 	

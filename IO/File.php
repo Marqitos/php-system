@@ -28,7 +28,7 @@ abstract class File {
      * @param string   $filename
      * @return boolean
      */
-    public  static function isReadable($filename) {
+    public static function isReadable($filename) {
         if (!$fh = @fopen($filename, 'r', true))
             return false;
         @fclose($fh);
