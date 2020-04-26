@@ -9,7 +9,7 @@ if (!class_exists(Resources, false)) {
 	require_once 'System/Localization/es.php';
 }
 
-class NotImplementedException extends Exception {
+class NotImplementedException extends RuntimeException {
 
     const E_NOTIMPL	=	0x80004001;
 	

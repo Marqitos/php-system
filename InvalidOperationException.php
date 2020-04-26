@@ -9,7 +9,7 @@ if (!class_exists(Resources, false)) {
 	require_once 'System/Localization/es.php';
 }
 
-class InvalidOperationException	extends Exception {
+class InvalidOperationException	extends RuntimeException {
 
     const COR_E_INVALIDOPERATION = 0x80131509;
     
