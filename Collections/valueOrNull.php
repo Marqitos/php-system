@@ -9,7 +9,6 @@ namespace System\Collections;
  * @param mixed $key Clave donde se debe buscar el valor
  * @return mixed Valor almacenado en el array o null
  */
-
 function valueOrNull(array $self, $key) {
     return isset($self[$key])
         ? $self[$key]

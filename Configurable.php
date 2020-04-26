@@ -45,7 +45,6 @@ abstract class Configurable implements ConfigurableInterface {
 	* Registra una función para que sea llamada cuando se vaya a producir un cambio en la configuración
 	*
 	* @param callback $callback
-	* @throws System\ArgumentOutOfRangeException
 	* @return void
 	*/
 	protected function registerOptionChanging(callable $callback) {
@@ -56,7 +55,6 @@ abstract class Configurable implements ConfigurableInterface {
 	* Registra una función para que sea llamada cuando se produzca un cambio en la configuración
 	*
 	* @param callback $callback
-	* @throws System\ArgumentOutOfRangeException
 	* @return void
 	*/
 	protected function registerOptionChanged(callable $callback) {
