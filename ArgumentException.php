@@ -9,7 +9,7 @@ if (!class_exists(Resources, false)) {
 	require_once 'System/Localization/es.php';
 }
 
-class ArgumentException	extends Exception {
+class ArgumentException	extends InvalidArgumentException {
 	
 	private $paramName;
   

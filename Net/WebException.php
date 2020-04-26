@@ -2,6 +2,8 @@
 
 namespace System\Net;
 
+use System\ArgumentOutOfRangeException;
+use System\Collections\KeyNotFoundException;
 use System\InvalidOperationException;
 use System\Localization\Resources;
 
@@ -34,6 +36,22 @@ class WebException extends InvalidOperationException {
     
     public function getStatus() {
       return $this->status;
+    }
+
+    public static getCodeMessage($code) {
+      $intCode = is_int($code)
+        ? $code
+        : @intval($code);
+      if($intCode == 0) {
+        require_once 'System/ArgumentOutOfRangeException.php';
+        throw new ArgumentOutOfRangeException('code', Resources::ArgumentOutOfRangeExceptionIntExpected)
+      }
+      $resource = 'WebException' . $intCode . 'Message';
+      if(isset(Resources::$resource))
+        return Resources::$resource;
+      
+      require_once 'System/Collections/KeyNotFoundException.php';
+      throw new KeyNotFoundException(sprintf(Resources::KeyNotFoundExceptionFormatedHttpCode, $code));
     }
     
   }
