@@ -38,13 +38,13 @@ class WebException extends InvalidOperationException {
       return $this->status;
     }
 
-    public static getCodeMessage($code) {
+    public static function getCodeMessage($code) {
       $intCode = is_int($code)
         ? $code
         : @intval($code);
       if($intCode == 0) {
         require_once 'System/ArgumentOutOfRangeException.php';
-        throw new ArgumentOutOfRangeException('code', Resources::ArgumentOutOfRangeExceptionIntExpected)
+        throw new ArgumentOutOfRangeException('code', Resources::ArgumentOutOfRangeExceptionIntExpected);
       }
       $resource = 'WebException' . $intCode . 'Message';
       if(isset(Resources::$resource))

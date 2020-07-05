@@ -5,7 +5,7 @@ namespace System;
 use Exception;
 use System\Localization\Resources;
 
-if (!class_exists(Resources, false)) {
+if (!class_exists('Resources', false)) {
 	require_once 'System/Localization/es.php';
 }
 
