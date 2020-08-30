@@ -76,6 +76,8 @@ abstract class Configurable implements ConfigurableInterface {
 		return $result;
 	}
 
+	// Miembros de System\Configurable\ConfigurableInterface
+
 	/**
 	* Establece una opción de configuración
 	*
@@ -84,7 +86,7 @@ abstract class Configurable implements ConfigurableInterface {
 	* @throws System\ArgumentOutOfRangeException
 	* @return void
 	*/
-	public function setOption($name, $value) {
+	public function setOption($name, $value) : void {
 		if (!is_string($name)) {
 			require_once 'System/ArgumentOutOfRangeException.php';
 			throw new ArgumentOutOfRangeException('name', Resources::ArgumentOutOfRangeExceptionStringExpected, $name);
