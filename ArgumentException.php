@@ -13,7 +13,7 @@ class ArgumentException	extends InvalidArgumentException {
 	
 	private $paramName;
   
-	const COR_E_ARGUMENT = 80070057; // 0x80070057;
+	const COR_E_ARGUMENT = 0x80070057;
 	
 	public function __construct($paramName, $message = Resources::ArgumentExceptionDefaultMessage, $code = self::COR_E_ARGUMENT) {
 		parent::__construct($message, $code);

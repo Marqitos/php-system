@@ -13,7 +13,7 @@ class ArgumentOutOfRangeException extends ArgumentException {
 		
 	private $actualValue;
   
-    const COR_E_ARGUMENTOUTOFRANGE = 80131502; // 0x80131502;
+    const COR_E_ARGUMENTOUTOFRANGE = 0x80131502;
 	
 	public function __construct($paramName, $message = Resources::ArgumentOutOfRangeExceptionDefaultMessage, $actualValue = null, $code = self::COR_E_ARGUMENTOUTOFRANGE) {
 		parent::__construct($paramName, $message, $code);

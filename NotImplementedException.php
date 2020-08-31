@@ -10,7 +10,7 @@ if (!class_exists('Resources', false)) {
 }
 
 class NotImplementedException extends Exception {
-    const E_NOTIMPL	= 80004001;	//0x80004001;
+    const E_NOTIMPL	= 0x80004001;
 	
 	public function __construct($message = Resources::NotImplementedExceptionDefaultMessage, $code = self::E_NOTIMPL) {
 		parent::__construct($message, $code);

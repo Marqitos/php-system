@@ -11,7 +11,7 @@ if (!class_exists('Resources', false)) {
 
 class NotSupportedException extends Exception {
 
-  const COR_E_NOTSUPPORTED = 80131515; // 0x80131515;
+  const COR_E_NOTSUPPORTED = 0x80131515;
 	
 	public function __construct($message = Resources::NotSupportedExceptionDefaultMessage, $code = self::COR_E_NOTSUPPORTED) {
 		parent::__construct($message, $code);
