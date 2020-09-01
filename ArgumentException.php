@@ -2,7 +2,7 @@
 
 namespace System;
 
-use Exception;
+use InvalidArgumentException;
 use System\Localization\Resources;
 
 if (!class_exists('Resources', false)) {
