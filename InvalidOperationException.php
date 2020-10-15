@@ -2,7 +2,6 @@
 
 namespace System;
 
-use Exception;
 use RuntimeException;
 use System\Localization\Resources;
 

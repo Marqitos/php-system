@@ -2,9 +2,8 @@
 
 namespace System\String;
 
-use function strtolower;
-use function strlen;
-use function substr;
+use function mb_stripos;
+use function mb_strpos;
 
 /**
 * Determina si el principio de una cadena coincide con una cadena especificada.
@@ -15,10 +14,7 @@ use function substr;
 */
 function startWith($haystack, $needle, $ignoreCase = FALSE) {
     if($ignoreCase) {
-        $haystack  = strtolower(substr($haystack, 0, strlen($needle)));
-        $needle = strtolower($needle);
-    } else {
-        $haystack  = substr($haystack, 0, strlen($needle));
+        return mb_stripos($haystack, $needle) === 0;
     }
-    return $haystack == $needle;
+    return mb_strpos($haystack, $needle) === 0;
 }
