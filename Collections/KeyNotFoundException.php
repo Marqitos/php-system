@@ -2,7 +2,8 @@
 
 namespace System\Collections;
 
-use Exception;
+use OutOfBoundsException;
+use Throwable;
 use System\Localization\Resources;
 
 if (!class_exists('Resources', false)) {
@@ -13,12 +14,12 @@ if (!class_exists('Resources', false)) {
  * Excepción que se produce cuando la clave especificada para obtener acceso a un elemento
  * de una colección no coincide con ninguna clave de la colección.
  */
-class KeyNotFoundException extends Exception {
+class KeyNotFoundException extends OutOfBoundsException {
     
     const COR_E_DLLNOTFOUND = 80131577; //0x80131577;
     
-    public function __construct($message = Resources::KeyNotFoundExceptionDefaultMessage, $code = self::COR_E_DLLNOTFOUND) {
-        parent::__construct($message, $code);
+    public function __construct($message = Resources::KeyNotFoundExceptionDefaultMessage, $code = self::COR_E_DLLNOTFOUND, Throwable $previous = null) {
+        parent::__construct($message, $code, $previous);
     }
     
 }
