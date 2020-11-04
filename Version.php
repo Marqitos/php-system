@@ -1,5 +1,15 @@
 <?php
-
+/**
+ * Numero de versión
+ *
+ * Description. Identifica una versión
+ *
+ * @package System
+ * @author Marcos Porto
+ * @copyright Marcos Porto Mariño
+ * @since v0.1
+ * PHP 5 >= 5.3.0, PHP 7
+ */
 namespace System;
 
 use function explode;
@@ -16,13 +26,13 @@ class Version {
     public function __construct($major, $minor = 0, $build = 0, $revision = 0) {
         if(is_string($major)) {
             $values = explode('.', $major, 4);
-            $this->major = intval($values[0]);
+            $this->major    = intval($values[0]);
             if(isset($values[1]))
-                $minor = $values[1];
+                $minor      = intval($values[1]);
             if(isset($values[2]))
-                $build = $values[2];
+                $build      = intval($values[2]);
             if(isset($values[3]))
-                $revision = $values[3];
+                $revision   = intval($values[3]);
         } else
             $this->major 	= intval($major);
 
