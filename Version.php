@@ -16,6 +16,9 @@ use function explode;
 use function intval;
 use function is_string;
 
+/**
+ * Identifica una versión de una librería
+ */
 class Version {
     
     private $major;
