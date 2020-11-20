@@ -2,17 +2,23 @@
 
 namespace System;
 
-use BadFunctionCallException;
+use RuntimeException;
+use Throwable;
 use System\Localization\Resources;
 
 if (!class_exists('Resources', false)) {
 	require_once 'System/Localization/es.php';
 }
 
-class NotImplementedException extends BadFunctionCallException {
-    const E_NOTIMPL	= 80004001;	//0x80004001;
-	
-	public function __construct($message = Resources::NotImplementedExceptionDefaultMessage, $code = self::E_NOTIMPL) {
-		parent::__construct($message, $code);
+require_once 'HResults.php';
+
+/**
+ * Class NotImplementedException
+ * @package System
+ */
+class NotImplementedException extends RuntimeException {
+
+	public function __construct($message = Resources::NotImplementedExceptionDefaultMessage, $code = HResults::E_NOTIMPL, Throwable $previous = null) {
+		parent::__construct($message, $code, $previous);
 	}
 }

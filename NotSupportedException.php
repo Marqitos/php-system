@@ -2,19 +2,21 @@
 
 namespace System;
 
-use Exception;
+use Throwable;
+use RuntimeException;
+use System\HResults;
 use System\Localization\Resources;
 
 if (!class_exists('Resources', false)) {
 	require_once 'System/Localization/es.php';
 }
 
-class NotSupportedException extends Exception {
+require_once 'HResults.php';
 
-  const COR_E_NOTSUPPORTED = 80131515; // 0x80131515;
-	
-	public function __construct($message = Resources::NotSupportedExceptionDefaultMessage, $code = self::COR_E_NOTSUPPORTED) {
-		parent::__construct($message, $code);
+class NotSupportedException extends RuntimeException {
+
+	public function __construct($message = Resources::NotSupportedExceptionDefaultMessage, $code = HResults::COR_E_NOTSUPPORTED, Throwable $previous) {
+		parent::__construct($message, $code, $previous);
 	}
 	
 }

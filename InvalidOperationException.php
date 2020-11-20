@@ -3,18 +3,29 @@
 namespace System;
 
 use RuntimeException;
+use Throwable;
+use System\HResults;
 use System\Localization\Resources;
 
 if (!class_exists('Resources', false)) {
 	require_once 'System/Localization/es.php';
 }
 
+require_once 'HResults.php';
+
 class InvalidOperationException	extends RuntimeException {
 
-    const COR_E_INVALIDOPERATION = 80131509; // 0x80131509;
-    
-    public function __contruct($message = Resources::InvalidOperationExceptionDefaultMessage, $code = self::COR_E_INVALIDOPERATION) {
-        parent::__contruct($message, $code);
+    public function __construct($message = null, $code = null, Throwable $previous = null) {
+		if(!is_string($message) || StringIsNullOrEmpty($message)) {
+            $message = Resources::InvalidOperationExceptionDefaultMessage;
+        }
+		if(!is_int($code) && !is_object($code) && !is_null($code)) {
+			$code = intval($code);
+		}
+		if(is_object($code) || is_null($code) || $code == 0) {
+            $code = HResults::COR_E_INVALIDOPERATION;
+        }
+        parent::__construct($message, $code, $previous);
     }
   
 }
