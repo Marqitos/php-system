@@ -15,7 +15,7 @@ require_once 'HResults.php';
 
 class NotSupportedException extends RuntimeException {
 
-	public function __construct($message = Resources::NotSupportedExceptionDefaultMessage, $code = HResults::COR_E_NOTSUPPORTED, Throwable $previous) {
+	public function __construct($message = Resources::NotSupportedExceptionDefaultMessage, $code = HResults::COR_E_NOTSUPPORTED, Throwable $previous = null) {
 		parent::__construct($message, $code, $previous);
 	}
 	
