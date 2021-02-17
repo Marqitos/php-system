@@ -32,3 +32,8 @@ class Resources {
     public const WebException503Message = 'El servidor no está disponible actualmente (sobrecargado o en mantenimiento).';
 
 }
+
+global $lang;
+if(!isset($lang)) {
+    $lang = 'es';
+}

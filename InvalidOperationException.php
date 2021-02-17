@@ -6,6 +6,7 @@ use RuntimeException;
 use Throwable;
 use System\HResults;
 use System\Localization\Resources;
+use function System\String\isNullOrEmpty as StringIsNullOrEmpty;
 
 if (!class_exists('Resources', false)) {
 	require_once 'System/Localization/es.php';
@@ -16,6 +17,7 @@ require_once 'HResults.php';
 class InvalidOperationException	extends RuntimeException {
 
     public function __construct($message = null, $code = null, Throwable $previous = null) {
+        require_once 'System/String/isNullOrEmpty.php';
 		if(!is_string($message) || StringIsNullOrEmpty($message)) {
             $message = Resources::InvalidOperationExceptionDefaultMessage;
         }

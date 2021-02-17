@@ -7,6 +7,9 @@ use System\Collections\KeyNotFoundException;
 use System\InvalidOperationException;
 use System\Localization\Resources;
 
+use function is_int;
+use function intval;
+
 require_once 'System/InvalidOperationException.php';
 
 /**
@@ -47,8 +50,9 @@ class WebException extends InvalidOperationException {
         throw new ArgumentOutOfRangeException('code', Resources::ArgumentOutOfRangeExceptionIntExpected);
       }
       $resource = 'WebException' . $intCode . 'Message';
-      if(isset(Resources::$resource))
+      if(isset(Resources::$resource)) {
         return Resources::$resource;
+      }
       
       require_once 'System/Collections/KeyNotFoundException.php';
       throw new KeyNotFoundException(sprintf(Resources::KeyNotFoundExceptionFormatedHttpCode, $code));
