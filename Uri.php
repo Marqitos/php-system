@@ -1,4 +1,13 @@
 <?php
+/**
+ * Numero de versión
+ *
+ * @package System
+ * @author Marcos Porto
+ * @copyright Marcos Porto Mariño
+ * @since v0.1
+ * PHP 5 >= 5.3.0, PHP 7
+ */
 
 namespace System;
 
@@ -58,12 +67,15 @@ class Uri {
 		if(array_key_exists('port', $this->data) && !self::isDefaultPort($this->data['scheme'], $this->data['port'])) {
 			$result .= ':' . $this->data['port'];
 		}
-		if(array_key_exists('path', $this->data))
+		if(array_key_exists('path', $this->data)) {
 			$result .= '/' . $this->data['path'];
-		if(array_key_exists('query', $this->data))
+		}
+		if(array_key_exists('query', $this->data)) {
 			$result .= '?' . $this->data['query'];
-		if(array_key_exists('fragment', $this->data))
+		}
+		if(array_key_exists('fragment', $this->data)) {
 			$result .= '#' . $this->data['fragment'];
+		}
 		
 		return $result;
 	}

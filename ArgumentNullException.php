@@ -33,8 +33,9 @@ class ArgumentNullException extends ArgumentException {
 	 * Comprueba el valor de una variable, y en caso de que sea null, lanza una excepción
 	 */
 	public static function validate($paramName, $value) {
-		if($value === null)
+		if($value === null) {
 			throw new self($paramName);
+		}
 		return true;
 	}
 	

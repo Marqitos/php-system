@@ -22,7 +22,7 @@ require_once 'System/Uom/UomInterface.php';
 class Byte implements UomInterface{
 
     private $quantity;
-    private $multiplos = 'ISO';
+    private $multiplos = 'ISO'; // SI
     // ISO/IEC 80000-13
     // Sistema Internacional
     const SI_UNITS = [
@@ -49,7 +49,7 @@ class Byte implements UomInterface{
      * @inheritdoc
      */
     public function getQuantity() {
-        return $this->getBytes;
+        return $this->getBytes();
     }
 
     /**
@@ -76,16 +76,18 @@ class Byte implements UomInterface{
      * @return string Representación del tamaño como texto
      */
     public function __toString() {
-        $quantity = $this->quantity;
+        $q = $this->quantity;
         $m = 0;
-        while($quantity > 1000) {
-            $quantity /= 1024; // ISO
-            $m++;
+        if($this->multiplos == 'ISO') {
+            while($q > 1000) {
+                $q /= 1024; // ISO
+                $m++;
+            }
         }
         if($m == 0) {
-            return sprintf("%d", $quantity) . ' ' . self::SI_UNITS[$m];
+            return sprintf("%d", $q) . ' ' . self::SI_UNITS[$m];
         }
-        return sprintf("%01.2f", $quantity) . ' ' . self::SI_UNITS[$m];
+        return sprintf("%01.2f", $q) . ' ' . self::SI_UNITS[$m];
     }
 
 }

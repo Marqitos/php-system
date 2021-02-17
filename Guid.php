@@ -20,6 +20,8 @@ use function str_repeat;
 use function substr;
 use function uniqid;
 
+const ARGUMENT_OUT_OF_RANGE_EXCEPTION_FILE = 'System/ArgumentOutOfRangeException.php';
+
 class Guid {
 
 	/**
@@ -41,14 +43,14 @@ class Guid {
 				try {
 					$this->raw = $this->createRaw($value);
 				} catch(Exception $e) {
-					require_once 'ArgumentOutOfRangeException.php';
+					require_once ARGUMENT_OUT_OF_RANGE_EXCEPTION_FILE;
 					throw new ArgumentOutOfRangeException('value', Resources::ArgumentOutOfRangeExceptionGUIDStringExpected, $value, null, $e);
 				}
 			}
 		} elseif($value instanceof Guid) {
 			$this->raw = $value->getRaw();
 		} else {
-			require_once 'ArgumentOutOfRangeException.php';
+			require_once ARGUMENT_OUT_OF_RANGE_EXCEPTION_FILE;
 			throw new ArgumentOutOfRangeException('value', Resources::ArgumentOutOfRangeExceptionStringExpected, $value);
 		}
 	}
@@ -111,10 +113,10 @@ class Guid {
 	 */
 	public function getHex() {
 		$cadena = '';
-		for($c = 0; $c < strlen($this->raw); $c++)
-			//$cadena .= dechex(ord(substr($this->raw, $c, 1)));
+		for($c = 0; $c < strlen($this->raw); $c++) {
 			$cadena .= sprintf('%02X', ord(substr($this->raw, $c, 1)));
-	  return strtoupper($cadena);
+		}
+		return strtoupper($cadena);
 	}
 	
 	/**
@@ -163,7 +165,7 @@ class Guid {
 		$value	= str_replace('-', '', $value);
 		$raw = @hex2bin($value);
 		if(strlen($raw) != 16) {
-			require_once 'ArgumentOutOfRangeException.php';
+			require_once ARGUMENT_OUT_OF_RANGE_EXCEPTION_FILE;
 			throw new ArgumentOutOfRangeException('value', Resources::ArgumentOutOfRangeExceptionGUIDStringExpected, $value);
 		}
 		return $raw;

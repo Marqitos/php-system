@@ -30,14 +30,18 @@ class Version {
         if(is_string($major)) {
             $values = explode('.', $major, 4);
             $this->major    = intval($values[0]);
-            if(isset($values[1]))
+            if(isset($values[1])) {
                 $minor      = intval($values[1]);
-            if(isset($values[2]))
+            }
+            if(isset($values[2])) {
                 $build      = intval($values[2]);
-            if(isset($values[3]))
+            }
+            if(isset($values[3])) {
                 $revision   = intval($values[3]);
-        } else
+            }
+        } else {
             $this->major 	= intval($major);
+        }
 
         $this->minor		= intval($minor);
         $this->build		= intval($build);
