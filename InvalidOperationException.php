@@ -1,4 +1,12 @@
 <?php
+/**
+ * Representa una excepción, que se lanza cuando una operación no se puede ejecutar
+ *
+ * @package System
+ * @author Marcos Porto
+ * @copyright Marcos Porto
+ * @since v0.4
+ */
 
 namespace System;
 
@@ -14,6 +22,10 @@ if (!class_exists('Resources', false)) {
 
 require_once 'HResults.php';
 
+/**
+ * Representa una excepción, que se lanza cuando una operación no se puede ejecutar
+ * @package System
+ */
 class InvalidOperationException	extends RuntimeException {
 
     public function __construct($message = null, $code = null, Throwable $previous = null) {

@@ -1,4 +1,12 @@
 <?php
+/**
+ * Representa una excepción, que se lanza cuando se intenta ejecutar codigo que aun no ha sido desarrollado
+ *
+ * @package System
+ * @author Marcos Porto
+ * @copyright Marcos Porto
+ * @since v0.4
+ */
 
 namespace System;
 
@@ -13,7 +21,7 @@ if (!class_exists('Resources', false)) {
 require_once 'HResults.php';
 
 /**
- * Class NotImplementedException
+ * Representa una excepción, que se lanza cuando se intenta ejecutar codigo que aun no ha sido desarrollado
  * @package System
  */
 class NotImplementedException extends RuntimeException {
