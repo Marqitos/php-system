@@ -1,4 +1,12 @@
 <?php
+/**
+ * Representa un identificador unico (UUID), de 16 bytes de longitud
+ *
+ * @package System
+ * @author Marcos Porto
+ * @copyright Marcos Porto
+ * @since v0.4
+ */
 
 namespace System;
 
@@ -7,12 +15,9 @@ use System\ArgumentOutOfRangeException;
 use System\Localization\Resources;
 
 use function chr;
-use function explode;
 use function is_string;
 use function md5;
-use function microtime;
 use function ord;
-use function rand;
 use function sprintf;
 use function strlen;
 use function strtoupper;
@@ -30,10 +35,10 @@ class Guid {
 	protected $raw;
 	
 	/**
-	 * Crea un GUID con un valor específico
+	 * Crea un UUID con un valor específico
 	 * 
-	 * @param string|System\Guid $value valor inicial
-	 * @throws System\ArgumentOutOfRangeException
+	 * @param string|Guid $value valor inicial
+	 * @throws ArgumentOutOfRangeException
 	 */
 	public function __construct($value) {
 		if(is_string($value)) {
@@ -58,17 +63,17 @@ class Guid {
 	/**
 	 * Obtiene un UUID vacío
 	 * 
-	 * @return System\Guid
+	 * @return Guid
 	 */
 	public static function getEmpty() {
 		return new self(str_repeat(chr(0), 16));
 	}
 	
 	/**
-	 * Intenta crear un GUID a partir de una valor
+	 * Intenta crear un UUID a partir de una valor
 	 * 
 	 * @param mixed $parse Valor a comprobar
-	 * @param System\Guid|Exception GUID en caso de exito, o la exceción que causo que no se pudiese analizar
+	 * @param Guid|Exception $guid UUID en caso de exito, o la exceción que causo que no se pudiese analizar
 	 * 
 	 * @return bool True en caso de exito
 	 */
@@ -88,7 +93,7 @@ class Guid {
 	}
 	
 	/**
-	 * Devuelve un nuevo GUID con un valor aleatorio
+	 * Devuelve un nuevo UUID con un valor aleatorio
 	 * 
 	 * @return System\Guid Nuevo objecto con un valor aleatorio
 	 */
@@ -99,10 +104,11 @@ class Guid {
 	/**
 	 * Devuelve si el contenido de System\Guid es vacío, o es null
 	 * 
+	 * @param Guid $id Valor a comprobar
 	 * @return bool true en caso de estar vacío
 	 */
 	public static function isEmpty(Guid $id = null) {
-		return $id == null ||
+		return $id === null ||
 			$id->raw == str_repeat(chr(0), 16);
 	}
 	

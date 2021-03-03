@@ -1,4 +1,12 @@
 <?php
+/**
+ * Contiene cadenas en español para mensajes de error y otros
+ *
+ * @package System
+ * @author Marcos Porto
+ * @copyright Marcos Porto
+ * @since v0.4
+ */
 
 namespace System\Localization;
 
