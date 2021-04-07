@@ -5,6 +5,9 @@ use function is_writable;
 use function is_readable;
 use function fclose;
 use function fopen;
+use function strrpos;
+use function strtolower;
+use function substr;
 
 abstract class File {
 
@@ -44,6 +47,20 @@ abstract class File {
     */
     public static function isGoodTmpDir($dir) {
         return is_readable($dir) && is_writable($dir);
-    }    
+    }
+    
+    public static function getExtension($filename) {
+        $extPos = strrpos($filename, '.');
+        return ($extPos === false)
+            ? false
+            : strtolower(substr($filename, $extPos + 1));
+    }
+
+    public static function GetFileNameWithoutExtension($filename) {
+        $extPos = strrpos($filename, '.');
+        return ($extPos === false)
+            ? $filename
+            : substr($filename, 0, $extPos);
+    }
 
 }
