@@ -33,9 +33,9 @@ function slugify($text) {
     
     $text = trim($text, '-'); // Elimina - al principio y al final
     
-    if (function_exists('iconv'))
+    if (function_exists('iconv')) {
         $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text); // convierte caracteres no ASCII en ASCII
-    else {
+    } else {
         require_once 'NotImplementedException.php';
         throw new NotImplementedException(Resources::NotImplementedExceptionNeedIconv);
     }
