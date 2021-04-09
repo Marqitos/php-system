@@ -1,4 +1,12 @@
 <?php
+/**
+ * Representa una excepción, que se lanza cuando una acción no es soportada por un objeto
+ *
+ * @package System
+ * @author Marcos Porto
+ * @copyright Marcos Porto
+ * @since v0.4
+ */
 
 namespace System;
 
@@ -7,11 +15,8 @@ use RuntimeException;
 use System\HResults;
 use System\Localization\Resources;
 
-if (!class_exists('Resources', false)) {
-	require_once 'System/Localization/es.php';
-}
-
 require_once 'HResults.php';
+require_once 'System/Localization/Resources.php';
 
 class NotSupportedException extends RuntimeException {
 

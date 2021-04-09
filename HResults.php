@@ -24,6 +24,7 @@ class HResults {
     public const COR_E_ARGUMENTOUTOFRANGE   = 0x0131502;    // 0x80131502;
     public const COR_E_INVALIDOPERATION     = 0x0131509;    // 0x80131509;
     public const COR_E_NOTSUPPORTED         = 0x0131515;    // 0x80131515;
+    public const COR_E_DLLNOTFOUND          = 0x0131577;    // 0x80131577;
     public const COR_E_IO                   = 0x0131620;    // 0x80131620;
 	public const COR_E_FILELOAD             = 0x0131621;    // 0x80131621;
 

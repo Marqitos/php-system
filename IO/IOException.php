@@ -6,11 +6,8 @@ use Exception;
 use System\HResults;
 use System\Localization\Resources;
 
-if (!class_exists('Resources', false)) {
-	require_once 'System/Localization/es.php';
-}
-
 require_once 'System/HResults.php';
+require_once 'System/Localization/Resources.php';
 
 /*
  * Excepción que es lanzada cuando se produce un error de E/S.

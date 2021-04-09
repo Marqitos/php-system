@@ -15,12 +15,13 @@ use Throwable;
 use System\HResults;
 use System\Localization\Resources;
 use function System\String\isNullOrEmpty as StringIsNullOrEmpty;
-
-if (!class_exists('Resources', false)) {
-	require_once 'System/Localization/es.php';
-}
+use function is_int;
+use function is_null;
+use function is_object;
+use function is_string;
 
 require_once 'HResults.php';
+require_once 'System/Localization/Resources.php';
 
 /**
  * Representa una excepción, que se lanza cuando una operación no se puede ejecutar

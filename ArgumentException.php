@@ -19,11 +19,8 @@ use System\HResults;
 use System\Localization\Resources;
 use function class_exists;
 
-if (!class_exists('Resources', false)) {
-	require_once 'System/Localization/es.php';
-}
-
 require_once 'HResults.php';
+require_once 'System/Localization/Resources.php';
 
 /**
  * Representa una excepción indicando que parametro y el motivo por el cual no es válido
