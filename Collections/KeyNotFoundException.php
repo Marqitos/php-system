@@ -7,7 +7,7 @@ use Throwable;
 use System\HResults;
 use System\Localization\Resources;
 
-require_once 'HResults.php';
+require_once 'System/HResults.php';
 require_once 'System/Localization/Resources.php';
  
 /*
