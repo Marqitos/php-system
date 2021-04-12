@@ -17,10 +17,10 @@ class Resources {
     public const ArgumentOutOfRangeExceptionDefaultMessage = 'Se ha especificado un argumento fuera de rango';
     public const ArgumentOutOfRangeExceptionIntExpected = 'Se esperaba un entero';
     public const ArgumentOutOfRangeExceptionStringExpected = 'Se esperaba una cadena';
-    public const ArgumentOutOfRangeExceptionGUIDStringExpected = 'Se ha especificado una cadena GUID no válida';
-    public const ArgumentOutOfRangeExceptionUrlExtected = 'Se esperaba una url válida';
+    public const ArgumentOutOfRangeExceptionGUIDStringExpected = 'Se esperaba una cadena GUID válida';
+    public const ArgumentOutOfRangeExceptionUrlExpected = 'Se esperaba una url válida';
     public const DirectoryNotFoundExceptionDefaultMessage = 'No se ha podido encontrar el directorio especificado';
-    public const FileNotFoundExceptionDefaultMessage = 'No se ha podido encontrar el archivos especificado';
+    public const FileNotFoundExceptionDefaultMessage = 'No se ha podido encontrar el archivo especificado';
     public const InvalidOperationExceptionDefaultMessage = 'Se ha producido una operación no permitida';
     public const IOExceptionDefaultMessage = 'Error E/S';
     public const KeyNotFoundExceptionDefaultMessage = 'La clave especificada no existe';
@@ -35,6 +35,7 @@ class Resources {
     public const WebException404Message = 'El documento no ha sido encontrado';
     public const WebException405Message = 'Se realizó una solicitud de un recurso utilizando un método no admitido';
     public const WebException406Message = 'El recurso solicitado solo es capaz de generar contenido no aceptable de acuerdo con los encabezados Accept enviados en la solicitud.';
+    public const WebException412Message = 'Solicitud no válida, Se ha denegado el acceso al recurso solicitado.';
     public const WebException500Message = 'Error interno de la aplicación';
     public const WebException501Message = 'El servidor no reconoce el método de solicitud o carece de la capacidad para cumplir con la solicitud.';
     public const WebException503Message = 'El servidor no está disponible actualmente (sobrecargado o en mantenimiento).';
