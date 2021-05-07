@@ -25,6 +25,7 @@ class Resources {
     public const IOExceptionDefaultMessage = 'Error E/S';
     public const KeyNotFoundExceptionDefaultMessage = 'La clave especificada no existe';
     public const KeyNotFoundExceptionFormatedHttpCode = 'No se ha encontrado un codigo http con valor %s';
+    public const KEY_NOT_FOUND_EXCEPTION_NO_EVENT_FORMAT        = 'No se ha definido el evento indicado (%s)';
     public const NotImplementedExceptionDefaultMessage = 'Instrucción no implementada';
     public const NotImplementedExceptionNeedIconv = 'Se necesita la funcion "iconv"';
     public const NotSupportedExceptionDefaultMessage = 'Instrucción no soportada';

@@ -15,13 +15,13 @@ if(!isset($lang) &&
    $localizationPlugin = $application->hasPlugin('localization')) {
     $localizationPlugin->getLocale();
 }
-
-if(isset($lang)) {
-    if(file_exists("$lang.php")) {
-        require_once "$lang.php";
-    } elseif(strlen($lang) > 2 && file_exists(substr($lang, 0, 2) . '.php')) {
-        require_once substr($lang, 0, 2) . '.php';
-    }
+if(isset($lang) &&
+   file_exists(__DIR__ . DIRECTORY_SEPARATOR . "$lang.php")) {
+    require_once __DIR__ . DIRECTORY_SEPARATOR . "$lang.php";
+} elseif(isset($lang) &&
+         strlen($lang) > 2 &&
+         file_exists(__DIR__ . DIRECTORY_SEPARATOR . substr($lang, 0, 2) . '.php')) {
+    require_once __DIR__ . DIRECTORY_SEPARATOR . substr($lang, 0, 2) . '.php';
 } else {
     require_once 'es.php';
 }
