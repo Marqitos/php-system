@@ -29,6 +29,7 @@ class Resources {
     public const NotImplementedExceptionDefaultMessage = 'Instrucción no implementada';
     public const NotImplementedExceptionNeedIconv = 'Se necesita la funcion "iconv"';
     public const NotSupportedExceptionDefaultMessage = 'Instrucción no soportada';
+    public const NOT_SUPPORTED_EXCEPTION_NO_ENVIRONMENT_FORMAT = 'Entorno no soportado: "%s"';
     public const WebException304Message = 'El recurso no se ha modificado desde la última solicitud.';
     public const WebException400Message = 'La solicitud no se puede cumplir debido a una sintaxis incorrecta';
     public const WebException401Message = 'Acceso no autorizado, se requieren credenciales';
