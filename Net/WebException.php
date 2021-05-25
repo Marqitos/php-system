@@ -1,14 +1,20 @@
-<?php
+<?php declare(strict_types = 1 );
+/**
+ * Excepción que se produce cuando ocurre un error al acceder a la red mediante un protocolo acoplable.
+ *
+ * @package System
+ * @author Marcos Porto
+ * @copyright Marcos Porto
+ * @since v0.1
+ */
 
 namespace System\Net;
 
-use System\ArgumentOutOfRangeException;
 use System\Collections\KeyNotFoundException;
 use System\InvalidOperationException;
 use System\Localization\Resources;
 
-use function is_int;
-use function intval;
+use function sprintf;
 
 require_once 'System/InvalidOperationException.php';
 
@@ -19,43 +25,33 @@ class WebException extends InvalidOperationException {
     
     private $status;
     
-    public function __construct($status, $message = null) {
-      $this->status = intval($status);
-      if($message == null) {
-        switch ($this->status) {
-          case 403:
-            $message = Resources::WebException403Message;
-            break;
-          case 404:
-            $message = Resources::WebException404Message;
-            break;
-          default:
-            $message = Resources::WebException500Message;
-            break;
+    public function __construct(int $status, string $message = null) {
+        $this->status = $status;
+        if($message == null) {
+            $message = isset(Resources::WEB_EXCEPTION_MESSAGES[$this->status])
+                ? Resources::WEB_EXCEPTION_MESSAGES[$this->status]
+                : Resources::WEB_EXCEPTION_MESSAGES[500];
         }
-      }
-      parent::__construct($message);
+        parent::__construct($message);
     }
     
-    public function getStatus() {
-      return $this->status;
+    public function getStatus() : int {
+        return $this->status;
     }
 
-    public static function getCodeMessage($code) {
-      $intCode = is_int($code)
-        ? $code
-        : @intval($code);
-      if($intCode == 0) {
-        require_once 'System/ArgumentOutOfRangeException.php';
-        throw new ArgumentOutOfRangeException('code', Resources::ArgumentOutOfRangeExceptionIntExpected);
-      }
-      $resource = 'WebException' . $intCode . 'Message';
-      if(isset(Resources::$resource)) {
-        return Resources::$resource;
-      }
-      
-      require_once 'System/Collections/KeyNotFoundException.php';
-      throw new KeyNotFoundException(sprintf(Resources::KeyNotFoundExceptionFormatedHttpCode, $code));
+    /**
+     * Obtiene el mensaje de error correspondiente al un código de error http
+     * 
+     * @param int $code Código de error http
+     * @return string Mensaje de error
+     * @throws KeyNotFoundException Si se especifica un código de error desconocido
+     */
+    public static function getCodeMessage(int $code) : string {
+        if(isset(Resources::WEB_EXCEPTION_MESSAGES[$code])) {
+            return Resources::WEB_EXCEPTION_MESSAGES[$code];
+        }
+        require_once 'System/Collections/KeyNotFoundException.php';
+        throw new KeyNotFoundException(sprintf(Resources::KEY_NOT_FOUND_EXCEPTION_NO_HTTP_FORMAT, $code));
     }
     
   }
