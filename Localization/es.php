@@ -14,7 +14,7 @@ class Resources {
 
     public const ArgumentExceptionDefaultMessage = 'Se ha especificado un argumento no válido';
     public const ArgumentNullExceptionDefaultMessage = 'El argumento no puede ser null';
-    public const ArgumentOutOfRangeExceptionDefaultMessage = 'Se ha especificado un argumento fuera de rango';
+    public const ARGUMENT_OUT_OF_RANGE_EXCEPTION_DEFAULT_MESSAGE = 'Se ha especificado un argumento fuera de rango';
     public const ArgumentOutOfRangeExceptionIntExpected = 'Se esperaba un entero';
     public const ArgumentOutOfRangeExceptionStringExpected = 'Se esperaba una cadena';
     public const ArgumentOutOfRangeExceptionGUIDStringExpected = 'Se esperaba una cadena GUID válida';

@@ -38,7 +38,7 @@ class ArgumentOutOfRangeException extends ArgumentException {
 	public function __construct(string $paramName, $message = null, $actualValue = null, $code = null, Throwable $previous = null) {
         require_once 'System/String/isNullOrEmpty.php';
 		if(!is_string($message) || StringIsNullOrEmpty($message)) {
-			$message = Resources::ArgumentOutOfRangeExceptionDefaultMessage;
+			$message = Resources::ARGUMENT_OUT_OF_RANGE_EXCEPTION_DEFAULT_MESSAGE;
 		}
 		if(!is_int($code) && !is_object($code) && !is_null($code)) {
 			$code = intval($code);
