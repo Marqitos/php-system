@@ -6,6 +6,7 @@
  * @author Marcos Porto
  * @copyright 2021, Marcos Porto
  * @since v0.4
+ * PHP 7 >= 7.2
  */
 
 namespace System;
@@ -65,13 +66,7 @@ abstract class Configurable implements ConfigurableInterface {
 		$this->callbacks[$eventName][] = $callback;
 	}
 
-	private function raiseOptionChanged($optionName) : void {
-		foreach($this->callbacks[self::EVENT_CHANGED] as $callback) {
-			call_user_func($callback, $optionName);
-		}
-	}
-
-	private function raiseOptionChanging($optionName, $value) : bool {
+	private function raiseOptionChanging(string $optionName, $value) : bool {
 		$result = true;
 		foreach($this->callbacks[self::EVENT_CHANGING] as $callback) {
 			$result = call_user_func($callback, $optionName, $value);
@@ -102,7 +97,9 @@ abstract class Configurable implements ConfigurableInterface {
 				$value = array_replace_recursive($this->options[$name], $value);
 			}
 			$this->options[$name] = $value;
-			$this->raiseOptionChanged($name);
+			foreach($this->callbacks[self::EVENT_CHANGED] as $callback) {
+				call_user_func($callback, $name);
+			}
 		}
 	}
 
@@ -120,7 +117,6 @@ abstract class Configurable implements ConfigurableInterface {
      * @param string $environment Entorno de trabajo
      * @return array Datos de configuración por defecto
      */
-    abstract public function getDefaultOptions($environment) : array;
-
+    abstract public function getDefaultOptions(string $environment) : array;
 
 }
