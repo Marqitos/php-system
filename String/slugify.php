@@ -1,5 +1,15 @@
 <?php
-
+/**
+ * Devuelve una cadena sin caracteres no ASCII ni espacios
+ *
+ * Description. Elimina o remplaza los caracteres no ASCII y espacios
+ *
+ * @package System
+ * @author Marcos Porto
+ * @copyright Marcos Porto Mariño
+ * @since v0.1
+ * PHP 5 >= 5.3.0, PHP 7
+ */
 namespace System\String;
 
 use System\Localization\Resources;
@@ -19,20 +29,20 @@ use function trim;
 * @return string Cadena transformada
 */
 function slugify($text) {
-    $text = preg_replace('~[^\\pL\d]+~u', '-', $text); // replace non letter or digits by -
+    $text = preg_replace('~[^\\pL\d]+~u', '-', $text); // remplaza caracteres que no sean letras ni digitos por -
     
-    $text = trim($text, '-'); // trim
+    $text = trim($text, '-'); // Elimina - al principio y al final
     
-    if (function_exists('iconv'))
-        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text); // transliterate
-    else {
+    if (function_exists('iconv')) {
+        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text); // convierte caracteres no ASCII en ASCII
+    } else {
         require_once 'NotImplementedException.php';
         throw new NotImplementedException(Resources::NotImplementedExceptionNeedIconv);
     }
     
-    $text = strtolower($text); // lowercase
+    $text = strtolower($text); // minusculas
     
-    $text = preg_replace('~[^-\w]+~', '', $text); // remove unwanted characters
+    $text = preg_replace('~[^-\w]+~', '', $text); // elimina caracteres no deseados
 
     return empty($text) ?
         'n-a':

@@ -14,7 +14,7 @@ require_once 'System/Guid.php';
  * @param array $self Array donde buscar el elemento;
  * @param mixed $key Clave donde se debe buscar el GUID
  * @throws ArgumentOutOfRangeException En caso de que el Array contenga un valor no GUID
- * @return mixed Texto en formato GUID o null
+ * @return string|null Texto en formato GUID o null
  */
 function valueNullGuid(array $self, $key) {
     try {
@@ -25,7 +25,7 @@ function valueNullGuid(array $self, $key) {
         require_once 'System/ArgumentOutOfRangeException.php';
         throw new ArgumentOutOfRangeException($key);
     }
-    return Guid::isEmpty($id)?
-        null:
-        $id->getHex();
+    return Guid::isEmpty($id)
+        ? null
+        : $id->getHex();
 }

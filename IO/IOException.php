@@ -3,25 +3,18 @@
 namespace System\IO;
 
 use Exception;
+use System\HResults;
 use System\Localization\Resources;
 
-if (!class_exists('Resources', false)) {
-	require_once 'System/Localization/es.php';
-}
+require_once 'System/HResults.php';
+require_once 'System/Localization/Resources.php';
 
 /*
  * Excepción que es lanzada cuando se produce un error de E/S.
  */
  class IOException extends Exception {
 	
-	const COR_E_IO = 0x80131620;
-	const COR_E_ENDOFSTREAM = 0x80070026;
-	const COR_E_FILELOAD = 0x80131621;
-	const COR_E_FILENOTFOUND = 0x80070002;
-	const COR_E_DIRECTORYNOTFOUND = 0x80070003;
-    const COR_E_PATHTOOLONG = 0x800700CE;	
-
-	public function __construct($message = Resources::IOExceptionDefaultMessage, $code = self::COR_E_IO) {
+	public function __construct($message = Resources::IOExceptionDefaultMessage, $code = HResults::COR_E_IO) {
 		parent::__construct($message, $code);
 	}
 	

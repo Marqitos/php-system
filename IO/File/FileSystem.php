@@ -23,8 +23,9 @@ class FileSystem extends File {
      * @return string Contenido del archivo (o false en caso de error)
      */
     public function read($mode = 'rb') {
-        if (!is_file($this->filename))
+        if (!is_file($this->filename)) {
             return false;
+        }
         $result = false;
         ignore_user_abort(true);
         $f = @fopen($this->filename, $mode);
@@ -47,7 +48,7 @@ class FileSystem extends File {
      */
     public function write($string, $mode = 'ab+', $perm = 0600) {
         $result = false;
-        ignore_user_abort(TRUE);
+        ignore_user_abort(true);
         $f = @fopen($this->filename, $mode);
         if ($f) {
             @flock($f, LOCK_EX);
@@ -69,8 +70,9 @@ class FileSystem extends File {
      * @return mixed false en caso de error, sino el numero de bytes escritos
      */
     public function modify(callable $action, $perm = 0600) {
-        if (file_exists($this->filename) && !is_file($this->filename))
+        if (file_exists($this->filename) && !is_file($this->filename)) {
             return false;
+        }
         $result = false;
         ignore_user_abort(true);
         $f = @fopen($this->filename, 'cb+');
