@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1 );
+<?php declare(strict_types = 1);
 /**
  * Implementa un objeto con opciones de configuración
  *
@@ -24,7 +24,7 @@ use function strtolower;
 require_once 'System/Configurable/ConfigurableInterface.php';
 
 /**
- * Implementa las funcionalidades básicas un objeto que se puede configurar al inicializar
+ * Implementa las funcionalidades básicas un objeto que se puede configurar al crear
  */
 abstract class Configurable implements ConfigurableInterface {
 
@@ -38,7 +38,7 @@ abstract class Configurable implements ConfigurableInterface {
 	];
 
 	/**
-	* Constructor
+	* Crea una nueva instancia de la clase
 	*
 	* @param array $options Array asociativo de opciones
 	*/
