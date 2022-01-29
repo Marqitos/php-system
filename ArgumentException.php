@@ -17,7 +17,6 @@ use InvalidArgumentException;
 use Throwable;
 use System\HResults;
 use System\Localization\Resources;
-use function class_exists;
 
 require_once 'HResults.php';
 require_once 'System/Localization/Resources.php';
