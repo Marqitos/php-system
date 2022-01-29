@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 /**
  * Determina si el principio de una cadena coincide con una cadena especificada.
  *
@@ -27,7 +27,7 @@ use function strpos;
 * @param boolean $ignoreCase Si true, ignora distinciones entre mayusculas y minusculas, por defecto false;
 * @return boolean Es true si value coincide con el principio de esta cadena; en caso contrario, es false.
 */
-function startWith($haystack, $needle, $ignoreCase = FALSE) {
+function startWith(string $haystack, string $needle, $ignoreCase = false) : bool {
     if($ignoreCase) {
         return function_exists('mb_stripos')
             ? mb_stripos($haystack, $needle) === 0

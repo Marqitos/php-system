@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 /**
  * Comprueba si una variable es una cadena vacia
  *
@@ -13,17 +13,16 @@
  */
 namespace System\String;
 
-use function is_string;
 use function trim;
 	
 /**
-* Comprueba si una cadena esta vacía
-*
-* @param string $value Cadena a comprobar
-* @return boolean Es true si la cadena está vacía.
-*/
-function isNullOrEmpty($value) {
+ * Comprueba si una variable es una cadena vacia
+ *
+ * @param string $value Cadena a comprobar
+ * @return boolean Es true si la cadena está vacía.
+ */
+function isNullOrEmpty(string $value = null): bool {
     return !isset($value) ||
         $value === null ||
-        (is_string($value) && trim($value) === '');
+        trim($value) === '';
 }

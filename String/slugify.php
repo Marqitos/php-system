@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 /**
  * Devuelve una cadena sin caracteres no ASCII ni espacios
  *
