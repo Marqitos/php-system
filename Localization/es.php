@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 /**
  * Contiene cadenas en español para mensajes de error y otros
  *
@@ -18,7 +18,7 @@ class Resources {
     public const ArgumentOutOfRangeExceptionIntExpected = 'Se esperaba un entero';
     public const ArgumentOutOfRangeExceptionStringExpected = 'Se esperaba una cadena';
     public const ArgumentOutOfRangeExceptionGUIDStringExpected = 'Se esperaba una cadena GUID válida';
-    public const ArgumentOutOfRangeExceptionUrlExpected = 'Se esperaba una url válida';
+    public const ARGUMENT_OUT_OF_RANGE_URL_EXPECTED = 'Se esperaba una url válida';
     public const DirectoryNotFoundExceptionDefaultMessage = 'No se ha podido encontrar el directorio especificado';
     public const FileNotFoundExceptionDefaultMessage = 'No se ha podido encontrar el archivo especificado';
     public const InvalidOperationExceptionDefaultMessage = 'Se ha producido una operación no permitida';

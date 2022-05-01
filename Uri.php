@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 /**
  * Numero de versión
  *
@@ -18,6 +18,7 @@ use function array_key_exists;
 use function is_array;
 use function is_string;
 use function parse_url;
+use function strtolower;
 
 class Uri {
 	private $data; // array()
@@ -41,7 +42,7 @@ class Uri {
 			$this->data = parse_url($url);
 			if(!$this->data) {
 				require_once 'ArgumentOutOfRangeException.php';
-				throw new ArgumentOutOfRangeException('url', Resources::ArgumentOutOfRangeExceptionUrlExtected, $url);
+				throw new ArgumentOutOfRangeException('url', Resources::ARGUMENT_OUT_OF_RANGE_URL_EXPECTED, $url);
 			}
 		} elseif(is_array($url)) {
 			$this->data = $url;
@@ -80,8 +81,8 @@ class Uri {
 		return $result;
 	}
 	
-	public static function isDefaultPort($scheme, $port) {
-		return 	!array_key_exists($scheme, self::defaultPorts) ||
+	public static function isDefaultPort(string $scheme, int $port) {
+		return 	!array_key_exists(strtolower($scheme), self::$defaultPorts) ||
 				self::$defaultPorts[$scheme] == $port;
 	}
 	
