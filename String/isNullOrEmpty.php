@@ -13,6 +13,7 @@
  */
 namespace System\String;
 
+use function is_string;
 use function trim;
 	
 /**
@@ -21,8 +22,8 @@ use function trim;
  * @param string $value Cadena a comprobar
  * @return boolean Es true si la cadena está vacía.
  */
-function isNullOrEmpty(string $value = null): bool {
+function isNullOrEmpty($value) : bool {
     return !isset($value) ||
         $value === null ||
-        trim($value) === '';
+        (is_string($value) && trim($value) === '');
 }

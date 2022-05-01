@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace System\Collections;
 
@@ -16,16 +16,16 @@ require_once 'System/Guid.php';
  * @param mixed $key Clave donde se debe buscar el GUID
  * @throws ArgumentNullException Si el valor encontrado es null o Guid::Empty
  * @throws ArgumentOutOfRangeException En caso de que el Array contenga un valor no GUID
- * @return mixed Texto en formato GUID
+ * @return string Texto en formato GUID
  */
-function validateGuid(array $self, $key) {
+function validateGuid(array $self, $key) : string {
     try {
         $id = isset($self[$key])
             ? new Guid($self[$key])
             : null;
     } catch(Exception $ex) {
         require_once 'System/ArgumentOutOfRangeException.php';
-        throw new ArgumentOutOfRangeException($key);
+        throw new ArgumentOutOfRangeException($key, null, $code, null, $ex);
     }
     if($id == null || Guid::isEmpty($id)) {
         require_once 'System/ArgumentNullException.php';
