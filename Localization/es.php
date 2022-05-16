@@ -10,6 +10,15 @@
 
 namespace System\Localization;
 
+use const UPLOAD_ERR_OK;
+use const UPLOAD_ERR_INI_SIZE;
+use const UPLOAD_ERR_FORM_SIZE;
+use const UPLOAD_ERR_PARTIAL;
+use const UPLOAD_ERR_NO_FILE;
+use const UPLOAD_ERR_NO_TMP_DIR;
+use const UPLOAD_ERR_CANT_WRITE;
+use const UPLOAD_ERR_EXTENSION;
+
 class Resources {
 
     public const ArgumentExceptionDefaultMessage = 'Se ha especificado un argumento no válido';
@@ -30,6 +39,10 @@ class Resources {
     public const NotImplementedExceptionNeedIconv = 'Se necesita la funcion "iconv"';
     public const NotSupportedExceptionDefaultMessage = 'Instrucción no soportada';
     public const NOT_SUPPORTED_EXCEPTION_NO_ENVIRONMENT_FORMAT = 'Entorno no soportado: "%s"';
+    public const UPLOAD_ERROR_CANT_WRITE_TARGET_DIRECTORY_FORMAT = 'Error al escribir el archivo en el directorio destino: %s';
+    public const UPLOADED_FILE_ALREADY_MOVED_EXCEPTION_DEFAULT_MESSAGE = 'El archivo ya ha sido movido';
+    public const UPLOAD_ERR_CANT_MOVE_FILE = 'No se ha podido mover el archivo';
+    public const UPLOAD_ERROR_CANT_WRITE_TARGET_PATH = 'No se ha podido escribir el archivo en la ruta de destino';
     public const WEB_EXCEPTION_MESSAGES = [
         304 => 'El recurso no se ha modificado desde la última solicitud.',
         400 => 'La solicitud no se puede cumplir debido a una sintaxis incorrecta',
@@ -43,7 +56,16 @@ class Resources {
         501 => 'El servidor no reconoce el método de solicitud o carece de la capacidad para cumplir con la solicitud.',
         503 => 'El servidor no está disponible actualmente (sobrecargado o en mantenimiento).'
     ];
-
+    public const UPLOAD_ERROR_MESSAGES = [
+        UPLOAD_ERR_OK         => 'El archivo se ha subido correctamente.',
+        UPLOAD_ERR_INI_SIZE   => 'El archivo supera el tamaño maximo permitido por el servidor.', // php.ini
+        UPLOAD_ERR_FORM_SIZE  => 'El archivo supera el tamaño maximo permitido.', // form
+        UPLOAD_ERR_PARTIAL    => 'El archivo solo se ha subido parcialmente',
+        UPLOAD_ERR_NO_FILE    => 'No se ha subido ningun archivo',
+        UPLOAD_ERR_NO_TMP_DIR => 'No se encuentra el directorio temporal',
+        UPLOAD_ERR_CANT_WRITE => 'Error al escribir el archivo en el disco',
+        UPLOAD_ERR_EXTENSION  => 'Una extensión del servidor ha bloqueado la subida del archivo.',
+    ];
 }
 
 global $lang;
