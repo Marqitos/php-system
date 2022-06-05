@@ -24,6 +24,7 @@ class FileUploadException extends IOException {
 	
 	public function __construct(int $uploadError, $message = null) {
         if($message === null) {
+            require_once 'System/Localization/Resources.php';
             $message = Resources::UPLOAD_ERROR_MESSAGES[$uploadError];
         }
 		parent::__construct($message, $code);
