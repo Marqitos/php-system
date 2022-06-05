@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1 );
+<?php declare(strict_types = 1);
 /**
  * Excepción que se produce cuando ocurre un error al acceder a la red mediante un protocolo acoplable.
  *
