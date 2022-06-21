@@ -27,7 +27,7 @@ class FileUploadException extends IOException {
             require_once 'System/Localization/Resources.php';
             $message = Resources::UPLOAD_ERROR_MESSAGES[$uploadError];
         }
-		parent::__construct($message, $code);
+		parent::__construct($message, $uploadError);
 	}
 
     public static function dueToUnwritableTarget($targetDirectory) {
