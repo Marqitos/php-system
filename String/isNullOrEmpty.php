@@ -9,7 +9,6 @@
  * @author Marcos Porto
  * @copyright Marcos Porto Mariño
  * @since v0.1
- * PHP 5 >= 5.3.0, PHP 7
  */
 namespace System\String;
 
