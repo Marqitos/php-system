@@ -1,9 +1,8 @@
 <?php declare(strict_types = 1);
 /**
- * Comprueba si una variable es una cadena vacia
+ * Remplaza los marcadores de posición de una cadena por los valores con la misma clave del contexto
  *
- * Description. Comprueba si una variable es una cadena vacia,
- * compuesta solo de espacios o null
+ * Description. Los valores del contexto deben se cadenas, u objetos con la funcion __toString()
  *
  * @package System
  * @author Marcos Porto
@@ -14,7 +13,7 @@
 namespace System\String;
 
  /**
- * Interpola valores de contexto en los marcadores de posición del mensaje..
+ * Interpola valores de contexto en los marcadores de posición del mensaje.
  */
 function interpolate(string $message, array $context = []) : string {
     // Construye una matriz de reemplazo con llaves alrededor de las claves de contexto
