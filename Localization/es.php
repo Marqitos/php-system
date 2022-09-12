@@ -19,6 +19,8 @@ use const UPLOAD_ERR_NO_TMP_DIR;
 use const UPLOAD_ERR_CANT_WRITE;
 use const UPLOAD_ERR_EXTENSION;
 
+require_once 'System/String/es-concatenate.php';
+
 class Resources {
 
     public const ArgumentExceptionDefaultMessage = 'Se ha especificado un argumento no válido';
@@ -66,6 +68,9 @@ class Resources {
         UPLOAD_ERR_CANT_WRITE => 'Error al escribir el archivo en el disco',
         UPLOAD_ERR_EXTENSION  => 'Una extensión del servidor ha bloqueado la subida del archivo.',
     ];
+    const AND   = [
+        0       => " y ",
+        1       => " e "];
 }
 
 global $lang;
