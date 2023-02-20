@@ -19,7 +19,7 @@ require_once 'System/DisposableInterface.php';
  */
 abstract class Disposable implements DisposableInterface {
 
-    function __destruct() {
+    public function __destruct() {
         $this->dispose();
     }
 
@@ -32,6 +32,6 @@ abstract class Disposable implements DisposableInterface {
         $this->disposing(true);
     }
 
-    protected abstract function disposing(bool $disposing);
+    abstract protected function disposing(bool $disposing);
 
 }

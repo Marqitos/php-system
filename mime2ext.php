@@ -19,20 +19,20 @@ use function is_array;
  * Obtiene la extensión / abreviatura identificadora de un archivo, para humanos de un cierto 'mime type'
  * Ciertos tipos de 'mime type' tienen múltiples extensiones, asumimos que queremos mostrar solo una
  *
- * @param string $mime_type
+ * @param string $mimeType
  * @return bool|string Extension when found, False otherwise
  *
  */
-function mime2ext(string $mime_type) {
+function mime2ext(string $mimeType) {
   $mimes = unserialize(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'mimes.ser'));
 
-  if ($ext = array_search($mime_type, $mimes, TRUE)) {
+  if ($ext = array_search($mimeType, $mimes, true)) {
     return $ext;
   }
 
-  foreach ($mimes as $ext => $mime_array) {
-    if (is_array($mime_array) &&
-        in_array($mime_type, $mime_array)) {
+  foreach ($mimes as $ext => $mimeArray) {
+    if (is_array($mimeArray) &&
+        in_array($mimeType, $mimeArray)) {
       return $ext;
     }
   }

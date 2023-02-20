@@ -17,7 +17,7 @@ namespace System\Configurable;
 interface ConfigurableInterface {
     /**
      * Establece el valor de un parametro
-     * 
+     *
      * @param string $key Clave de configuración
      * @param mixed $value Valor de configuración
      * @return void
@@ -25,7 +25,7 @@ interface ConfigurableInterface {
     public function setOption(string $key, $value) : void;
     /**
      * Obtiene toda la configuración
-     * 
+     *
      * @return array Datos de configuración actuales
      */
     public function getOptions() : array;
