@@ -14,7 +14,7 @@ namespace System\String;
 
 use function is_string;
 use function trim;
-	
+
 /**
  * Comprueba si una variable es una cadena vacia
  *
