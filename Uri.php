@@ -14,7 +14,6 @@ namespace System;
 use System\ArgumentOutOfRangeException;
 use System\Localization\Resources;
 
-use function array_key_exists;
 use function is_array;
 use function is_string;
 use function parse_url;
@@ -61,20 +60,22 @@ class Uri {
 	
 	public function __toString() {
 		$result = $this->data['scheme'] . '://';
-		if(array_key_exists('user', $this->data) && array_key_exists('pass', $this->data)) {
-			$result .= $this->data['user'] . ':' . $this->data['pass'] .'@';
+		if (isset($this->data['user']) &&
+		    isset($this->data['pass'])) {
+			$result .= $this->data['user'] . ':' . $this->data['pass'] . '@';
 		}
 		$result .=  $this->data['host'];
-		if(array_key_exists('port', $this->data) && !self::isDefaultPort($this->data['scheme'], $this->data['port'])) {
+		if (isset($this->data['port']) &&
+		   !self::isDefaultPort($this->data['scheme'], $this->data['port'])) {
 			$result .= ':' . $this->data['port'];
 		}
-		if(array_key_exists('path', $this->data)) {
+		if (isset($this->data['path'])) {
 			$result .= '/' . $this->data['path'];
 		}
-		if(array_key_exists('query', $this->data)) {
+		if (isset($this->data['query'])) {
 			$result .= '?' . $this->data['query'];
 		}
-		if(array_key_exists('fragment', $this->data)) {
+		if (isset($this->data['fragment'])) {
 			$result .= '#' . $this->data['fragment'];
 		}
 		
@@ -82,10 +83,9 @@ class Uri {
 	}
 	
 	public static function isDefaultPort(string $scheme, int $port) {
-		return 	!array_key_exists(strtolower($scheme), self::$defaultPorts) ||
-				self::$defaultPorts[$scheme] == $port;
+		return !isset(self::$defaultPorts[strtolower($scheme)]) ||
+			   self::$defaultPorts[$scheme] == $port;
 	}
 	
 	
 }
-
