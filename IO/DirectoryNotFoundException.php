@@ -12,9 +12,9 @@ require_once 'System/IO/IOException.php';
  */
  
 class DirectoryNotFoundException extends IOException {
-		
-	public function __construct($message = Resources::DirectoryNotFoundExceptionDefaultMessage, $code = HResults::COR_E_DIRECTORYNOTFOUND) {
-		parent::__construct($message, $code);
-	}
-	
+        
+    public function __construct($message = Resources::DirectoryNotFoundExceptionDefaultMessage, $code = HResults::COR_E_DIRECTORYNOTFOUND) {
+        parent::__construct($message, $code);
+    }
+    
 }

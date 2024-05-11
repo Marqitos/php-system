@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 /**
  * Representa una excepción que es lanzada cuando se intenta subir un archivo.
  *
@@ -21,14 +21,14 @@ require_once 'System/IO/IOException.php';
  * Excepción que es lanzada cuando se intenta subir un archivo.
  */
 class FileUploadException extends IOException {
-	
-	public function __construct(int $uploadError, $message = null) {
+
+    public function __construct(int $uploadError, $message = null) {
         if($message === null) {
             require_once 'System/Localization/Resources.php';
             $message = Resources::UPLOAD_ERROR_MESSAGES[$uploadError];
         }
-		parent::__construct($message, $uploadError);
-	}
+        parent::__construct($message, $uploadError);
+    }
 
     public static function dueToUnwritableTarget($targetDirectory) {
         $message = sprintf(Resources::UPLOAD_ERROR_CANT_WRITE_TARGET_DIRECTORY_FORMAT, $targetDirectory);
@@ -42,5 +42,5 @@ class FileUploadException extends IOException {
     public static function forUnmovableFile() {
         return new FileUploadException(UPLOAD_ERR_CANT_WRITE, Resources::UPLOAD_ERR_CANT_MOVE_FILE);
     }
-	
+
 }

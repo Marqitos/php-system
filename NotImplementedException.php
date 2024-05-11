@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 /**
  * Representa una excepción, que se lanza cuando se intenta ejecutar codigo que aun no ha sido desarrollado
  *
@@ -24,7 +24,7 @@ require_once 'System/Localization/Resources.php';
  */
 class NotImplementedException extends RuntimeException {
 
-	public function __construct($message = Resources::NotImplementedExceptionDefaultMessage, $code = HResults::E_NOTIMPL, Throwable $previous = null) {
-		parent::__construct($message, $code, $previous);
-	}
+    public function __construct($message = Resources::NotImplementedExceptionDefaultMessage, $code = HResults::E_NOTIMPL, Throwable $previous = null) {
+        parent::__construct($message, $code, $previous);
+    }
 }

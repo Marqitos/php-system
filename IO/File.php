@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types = 1);
+
 namespace System\IO;
 
 use function explode;
@@ -14,15 +15,13 @@ use function substr;
 
 abstract class File {
 
-    protected $filename;
+    public function __construct(
+        protected string $filename
+    ) {}
 
-    public function __construct($filename) {
-        $this->filename = $filename;
-    }
-
-    public abstract function write($string, $mode = 'ab+', $perm = 0600);
-    public abstract function read($mode = 'rb');
-    public abstract function modify(callable $action, $perm = 0600);
+    abstract public function write($string, $mode = 'ab+', $perm = 0600);
+    abstract public function read($mode = 'rb');
+    abstract public function modify(callable $action, $perm = 0600);
 
     /**
      * Returns TRUE if the $filename is readable, or FALSE otherwise.
@@ -87,6 +86,5 @@ abstract class File {
         }
         return $paths;
     }
-
 
 }

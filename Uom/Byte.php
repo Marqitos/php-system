@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 /**
  * Unidad de almacenamiento de bytes
  *
@@ -21,7 +21,6 @@ require_once 'System/Uom/UomInterface.php';
  */
 class Byte implements UomInterface{
 
-    private $quantity;
     private $multiplos = 'ISO'; // SI
     // ISO/IEC 80000-13
     // Sistema Internacional
@@ -38,12 +37,12 @@ class Byte implements UomInterface{
 
     /**
      * Crea un objeto con la cantidad inicial de bytes
-     * 
+     *
      * @param int $quantity Cantidad de bytes
      */
-    public function __construct(int $quantity) {
-        $this->quantity = $quantity;
-    }
+    public function __construct(
+        private int $quantity
+    ) {}
 
     /**
      * @inheritdoc
@@ -54,7 +53,7 @@ class Byte implements UomInterface{
 
     /**
      * Obtiene la cantidad de bytes
-     * 
+     *
      * @return int Cantidad de bytes
      */
     public function getBytes() {
@@ -63,7 +62,7 @@ class Byte implements UomInterface{
 
     /**
      * Establece la cantidad de bytes
-     * 
+     *
      * @param int $value Cantidad de bytes
      */
     public function setBytes(int $value) {
@@ -72,7 +71,7 @@ class Byte implements UomInterface{
 
     /**
      * Devuelve una cadena expresando el tamaño, en la unidad más adecuada
-     * 
+     *
      * @return string Representación del tamaño como texto
      */
     public function __toString() {

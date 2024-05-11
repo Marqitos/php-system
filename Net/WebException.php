@@ -23,10 +23,10 @@ require_once 'System/InvalidOperationException.php';
  */
 class WebException extends InvalidOperationException {
     
-    private $status;
-    
-    public function __construct(int $status, string $message = null) {
-        $this->status = $status;
+    public function __construct(
+        private int $status,
+        string $message = null
+    ) {
         if($message == null) {
             $message = isset(Resources::WEB_EXCEPTION_MESSAGES[$this->status])
                 ? Resources::WEB_EXCEPTION_MESSAGES[$this->status]
@@ -41,7 +41,7 @@ class WebException extends InvalidOperationException {
 
     /**
      * Obtiene el mensaje de error correspondiente al un código de error http
-     * 
+     *
      * @param int $code Código de error http
      * @return string Mensaje de error
      * @throws KeyNotFoundException Si se especifica un código de error desconocido

@@ -1,23 +1,20 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace System\Text\RegularExpressions;
 
 class Regex {
-	
-	private $pattern;
-	private $caseSensitive;
-	
-	public function __construct($pattern, $caseSensitive = true) {
-		$this->pattern = $pattern;
-		$this->caseSensitive = $caseSensitive;
-	}
-	
-	public static function Escape($string) {
-		
-	}
-	
-	public static function Unescape($string) {
-		
-	}
-	
+    
+    public function __construct(
+        private $pattern, 
+        private bool $caseSensitive = true
+    ) {}
+    
+    public static function Escape($string) {
+        
+    }
+    
+    public static function Unescape($string) {
+        
+    }
+    
 }

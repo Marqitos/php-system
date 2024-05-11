@@ -36,7 +36,7 @@ class Uri {
 		'ftp'	=> 	21
 	];
 	
-	public function __construct($url) {
+	public function __construct(string|array|Uri $url) {
 		if(is_string($url)) {
 			$this->data = parse_url($url);
 			if(!$this->data) {
