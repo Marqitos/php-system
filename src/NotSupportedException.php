@@ -1,12 +1,12 @@
 <?php declare(strict_types = 1);
 /**
- * Representa una excepción, que se lanza cuando una acción no es soportada por un objeto
- *
- * @package System
- * @author Marcos Porto
- * @copyright Marcos Porto
- * @since v0.4
- */
+  * Representa una excepción, que se lanza cuando una acción no es soportada por un objeto
+  *
+  * @package    System
+  * @author     Marcos Porto Mariño
+  * @copyright  2025, Marcos Porto
+  * @since      v0.4
+  */
 
 namespace System;
 
@@ -25,9 +25,9 @@ class NotSupportedException extends RuntimeException {
     }
 
     /**
-     * Lanza la exception, con un mensaje indicando que el entorno especificado no es válido
-     */
-    public static function NotValidEnvironment(string $status) {
+      * Lanza la exception, con un mensaje indicando que el entorno especificado no es válido
+      */
+    public static function notValidEnvironment(string $status) {
         throw new self(sprintf(Resources::NOT_SUPPORTED_EXCEPTION_NO_ENVIRONMENT_FORMAT, $status));
     }
     

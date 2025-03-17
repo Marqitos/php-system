@@ -1,11 +1,12 @@
 <?php declare(strict_types = 1);
 /**
- * Representa uno o más errores que se producen durante la ejecución de una aplicación.
- *
- * @package System
- * @author Marcos Porto
- * @copyright Marcos Porto Mariño
- * @since v0.5
+  * Representa uno o más errores que se producen durante la ejecución de una aplicación.
+  *
+  * @package    System
+  * @author     Marcos Porto Mariño
+  * @copyright  2025, Marcos Porto
+  * @since      v0.5
+  * @version    v0.6
  */
 
 namespace System;
@@ -26,7 +27,7 @@ class AggregateException extends LogicException {
      * @param Throwable|null $previous Excepción previa
      */
     public function __construct(Throwable $innerException) {
-        parent::__construct('', 0);
+        parent::__construct('', 0, $innerException);
         $this->addInnerException($innerException);
     }
 
@@ -64,7 +65,7 @@ class AggregateException extends LogicException {
      * @param Throwable $innerException Excepción a añadir
      * @return void
      */
-    public static function aggregateException(AggregateException &$aggregateException = null, Throwable $innerException) : void {
+    public static function aggregateException(Throwable $innerException, AggregateException &$aggregateException = null) : void {
         if ($aggregateException === null) {
             $aggregateException = new self($innerException);
         } else {

@@ -1,12 +1,12 @@
-<?php
+<?php declare(strict_types = 1);
 /**
- * Representa una excepción, que se lanza cuando una operación no se puede ejecutar
- *
- * @package System
- * @author Marcos Porto
- * @copyright Marcos Porto
- * @since v0.4
- */
+  * Representa una excepción, que se lanza cuando una operación no se puede ejecutar
+  *
+  * @package    System
+  * @author     Marcos Porto Mariño
+  * @copyright  2025, Marcos Porto
+  * @since v0.4
+  */
 
 namespace System;
 

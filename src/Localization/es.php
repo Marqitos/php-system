@@ -1,12 +1,12 @@
 <?php declare(strict_types = 1);
 /**
- * Contiene cadenas en español para mensajes de error y otros
- *
- * @package System
- * @author Marcos Porto
- * @copyright Marcos Porto
- * @since v0.4
- */
+  * Contiene cadenas en español para mensajes de error y otros
+  *
+  * @package    System
+  * @author     Marcos Porto Mariño
+  * @copyright  2025, Marcos Porto
+  * @since      v0.4
+  */
 
 namespace System\Localization;
 
@@ -23,14 +23,14 @@ require_once 'System/String/es-concatenate.php';
 
 class Resources {
 
-    public const ArgumentExceptionDefaultMessage = 'Se ha especificado un argumento no válido';
-    public const ArgumentNullExceptionDefaultMessage = 'El argumento no puede ser null';
-    public const ARGUMENT_OUT_OF_RANGE_EXCEPTION_DEFAULT_MESSAGE = 'Se ha especificado un argumento fuera de rango';
-    public const ArgumentOutOfRangeExceptionIntExpected = 'Se esperaba un entero';
-    public const ArgumentOutOfRangeExceptionStringExpected = 'Se esperaba una cadena';
-    public const ArgumentOutOfRangeExceptionGUIDStringExpected = 'Se esperaba una cadena GUID válida';
-    public const ARGUMENT_OUT_OF_RANGE_URL_EXPECTED = 'Se esperaba una url válida';
-    public const DirectoryNotFoundExceptionDefaultMessage = 'No se ha podido encontrar el directorio especificado';
+    public const E_ARGUMENT_EXCEPTION = 'Se ha especificado un argumento no válido';
+    public const E_ARGUMENT_NULL = 'El argumento no puede ser null';
+    public const E_ARGUMENT_OUT_OF_RANGE = 'Se ha especificado un argumento fuera de rango';
+    public const E_ARGUMENT_OUT_OF_RANGE_INT_EXPECTED = 'Se esperaba un entero';
+    public const E_ARGUMENT_OUT_OF_RANGE_STRING_EXPECTED = 'Se esperaba una cadena';
+    public const E_ARGUMENT_OUT_OF_RANGE_GUID_STRING_EXPECTED = 'Se esperaba una cadena GUID válida';
+    public const E_ARGUMENT_OUT_OF_RANGE_URL_EXPECTED = 'Se esperaba una url válida';
+    public const E_DIRECTORY_NOT_FOUND_EXCEPTION_DEFAULT_MESSAGE = 'No se ha podido encontrar el directorio especificado';
     public const FileNotFoundExceptionDefaultMessage = 'No se ha podido encontrar el archivo especificado';
     public const InvalidOperationExceptionDefaultMessage = 'Se ha producido una operación no permitida';
     public const IOExceptionDefaultMessage = 'Error E/S';

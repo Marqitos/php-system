@@ -1,12 +1,12 @@
-<?php
+<?php declare(strict_types = 1);
 /**
- * Carga los recursos localizados para mensajes de error y otros
- *
- * @package System
- * @author Marcos Porto
- * @copyright Marcos Porto
- * @since v0.4
- */
+  * Carga los recursos localizados para mensajes de error y otros
+  *
+  * @package    System
+  * @author     Marcos Porto Mariño
+  * @copyright  2025, Marcos Porto
+  * @since      v0.4
+  */
 
 global $lang, $application;
 
