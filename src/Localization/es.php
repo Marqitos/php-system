@@ -23,28 +23,28 @@ require_once 'System/String/es-concatenate.php';
 
 class Resources {
 
-    public const E_ARGUMENT_EXCEPTION = 'Se ha especificado un argumento no válido';
-    public const E_ARGUMENT_NULL = 'El argumento no puede ser null';
-    public const E_ARGUMENT_OUT_OF_RANGE = 'Se ha especificado un argumento fuera de rango';
-    public const E_ARGUMENT_OUT_OF_RANGE_INT_EXPECTED = 'Se esperaba un entero';
-    public const E_ARGUMENT_OUT_OF_RANGE_STRING_EXPECTED = 'Se esperaba una cadena';
-    public const E_ARGUMENT_OUT_OF_RANGE_GUID_STRING_EXPECTED = 'Se esperaba una cadena GUID válida';
-    public const E_ARGUMENT_OUT_OF_RANGE_URL_EXPECTED = 'Se esperaba una url válida';
+    public const E_ARGUMENT_EXCEPTION                           = 'Se ha especificado un argumento no válido';
+    public const E_ARGUMENT_NULL                                = 'El argumento no puede ser null';
+    public const E_ARGUMENT_OUT_OF_RANGE                        = 'Se ha especificado un argumento fuera de rango';
+    public const E_ARGUMENT_OUT_OF_RANGE_INT_EXPECTED           = 'Se esperaba un entero';
+    public const E_ARGUMENT_OUT_OF_RANGE_STRING_EXPECTED        = 'Se esperaba una cadena';
+    public const E_ARGUMENT_OUT_OF_RANGE_GUID_STRING_EXPECTED   = 'Se esperaba una cadena GUID válida';
+    public const E_ARGUMENT_OUT_OF_RANGE_URL_EXPECTED           = 'Se esperaba una url válida';
     public const E_DIRECTORY_NOT_FOUND_EXCEPTION_DEFAULT_MESSAGE = 'No se ha podido encontrar el directorio especificado';
-    public const FileNotFoundExceptionDefaultMessage = 'No se ha podido encontrar el archivo especificado';
-    public const InvalidOperationExceptionDefaultMessage = 'Se ha producido una operación no permitida';
-    public const IOExceptionDefaultMessage = 'Error E/S';
-    public const KeyNotFoundExceptionDefaultMessage = 'La clave especificada no existe';
+    public const FILE_NOT_FOUND_EXCEPTION_DEFAULT_MESSAGE       = 'No se ha podido encontrar el archivo especificado';
+    public const INVALID_OPERATION_EXCEPTION_DEFAULT_MESSAGE    = 'Se ha producido una operación no permitida';
+    public const IO_EXCEPTION_DEFAULT_MESSAGE                   = 'Error E/S';
+    public const KEY_NOT_FOUND_EXCEPTION_DEFAULT_MESSAGE        = 'La clave especificada no existe';
     public const KEY_NOT_FOUND_EXCEPTION_NO_HTTP_FORMAT         = 'No se ha encontrado un codigo http con valor %s';
     public const KEY_NOT_FOUND_EXCEPTION_NO_EVENT_FORMAT        = 'No se ha definido el evento indicado (%s)';
-    public const NotImplementedExceptionDefaultMessage = 'Instrucción no implementada';
-    public const NotImplementedExceptionNeedIconv = 'Se necesita la funcion "iconv"';
-    public const NotSupportedExceptionDefaultMessage = 'Instrucción no soportada';
-    public const NOT_SUPPORTED_EXCEPTION_NO_ENVIRONMENT_FORMAT = 'Entorno no soportado: "%s"';
+    public const NOT_IMPLEMENTED_EXCEPTION_DEFAULT_MESSAGE      = 'Instrucción no implementada';
+    public const NOT_IMPLEMENTED_EXCEPTION_NEED_ICONV           = 'Se necesita la funcion "iconv"';
+    public const NOT_SUPPORTED_EXCEPTION_DEFAULT_MESSAGE        = 'Instrucción no soportada';
+    public const NOT_SUPPORTED_EXCEPTION_NO_ENVIRONMENT_FORMAT  = 'Entorno no soportado: "%s"';
     public const UPLOAD_ERROR_CANT_WRITE_TARGET_DIRECTORY_FORMAT = 'Error al escribir el archivo en el directorio destino: %s';
     public const UPLOADED_FILE_ALREADY_MOVED_EXCEPTION_DEFAULT_MESSAGE = 'El archivo ya ha sido movido';
-    public const UPLOAD_ERR_CANT_MOVE_FILE = 'No se ha podido mover el archivo';
-    public const UPLOAD_ERROR_CANT_WRITE_TARGET_PATH = 'No se ha podido escribir el archivo en la ruta de destino';
+    public const UPLOAD_ERR_CANT_MOVE_FILE                      = 'No se ha podido mover el archivo';
+    public const UPLOAD_ERROR_CANT_WRITE_TARGET_PATH            = 'No se ha podido escribir el archivo en la ruta de destino';
     public const WEB_EXCEPTION_MESSAGES = [
         304 => 'El recurso no se ha modificado desde la última solicitud.',
         400 => 'La solicitud no se puede cumplir debido a una sintaxis incorrecta',

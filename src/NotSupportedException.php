@@ -20,7 +20,7 @@ require_once 'System/Localization/Resources.php';
 
 class NotSupportedException extends RuntimeException {
 
-    public function __construct(string $message = Resources::NotSupportedExceptionDefaultMessage, int $code = HResults::COR_E_NOTSUPPORTED, Throwable $previous = null) {
+    public function __construct(string $message = Resources::NOT_SUPPORTED_EXCEPTION_DEFAULT_MESSAGE, int $code = HResults::COR_E_NOTSUPPORTED, Throwable $previous = null) {
         parent::__construct($message, $code, $previous);
     }
 

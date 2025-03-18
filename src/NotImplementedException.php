@@ -24,7 +24,7 @@ require_once 'System/Localization/Resources.php';
  */
 class NotImplementedException extends RuntimeException {
 
-    public function __construct($message = Resources::NotImplementedExceptionDefaultMessage, $code = HResults::E_NOTIMPL, Throwable $previous = null) {
+    public function __construct($message = Resources::NOT_IMPLEMENTED_EXCEPTION_DEFAULT_MESSAGE, $code = HResults::E_NOTIMPL, Throwable $previous = null) {
         parent::__construct($message, $code, $previous);
     }
 }

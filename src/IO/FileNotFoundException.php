@@ -13,7 +13,7 @@ require_once 'System/IO/IOException.php';
  */
 class FileNotFoundException extends IOException {
     
-    public function __construct($message = Resources::FileNotFoundExceptionDefaultMessage, $code = HResults::COR_E_FILENOTFOUND) {
+    public function __construct($message = Resources::FILE_NOT_FOUND_EXCEPTION_DEFAULT_MESSAGE, $code = HResults::COR_E_FILENOTFOUND) {
         parent::__construct($message, $code);
     }
     

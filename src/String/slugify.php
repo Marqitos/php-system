@@ -22,12 +22,12 @@ use function strtolower;
 use function trim;
 
 /**
-* Devuelve una cadena sin caracteres no ASCII ni espacios.
-*
-* @param string $text Cadena a transformar
-* @throws NotImplementedException Si no existe la funcion iconv
-* @return string Cadena transformada
-*/
+  * Devuelve una cadena sin caracteres no ASCII ni espacios.
+  *
+  * @param string $text Cadena a transformar
+  * @throws NotImplementedException Si no existe la funcion iconv
+  * @return string Cadena transformada
+  */
 function slugify($text) {
     $text = preg_replace('~[^\\pL\d]+~u', '-', $text); // remplaza caracteres que no sean letras ni digitos por -
     
@@ -37,7 +37,7 @@ function slugify($text) {
         $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text); // convierte caracteres no ASCII en ASCII
     } else {
         require_once 'NotImplementedException.php';
-        throw new NotImplementedException(Resources::NotImplementedExceptionNeedIconv);
+        throw new NotImplementedException(Resources::NOT_IMPLEMENTED_EXCEPTION_NEED_ICONV);
     }
     
     $text = strtolower($text); // minusculas
