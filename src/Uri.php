@@ -3,7 +3,7 @@
   * Manejo y descomposición de URLs
   *
   * @package    System
-  * @author     Marcos Porto Mariño
+  * @author     Marcos Porto Mariño <lib-system@marcospor.to>
   * @copyright  2025, Marcos Porto
   * @since      v0.1
   */
@@ -34,7 +34,7 @@ class Uri {
         'https' =>  443,
         'ftp'   =>  21
     ];
-    
+
     public function __construct(string|array|Uri $url) {
         if(is_string($url)) {
             $this->data = parse_url($url);
@@ -48,15 +48,15 @@ class Uri {
             $this->data = array_merge($url->data);
         }
     }
-    
+
     public function getScheme() {
         return $this->data['scheme'];
     }
-    
+
     public function setScheme($value) {
         $this->data['scheme'] = $value;
     }
-    
+
     public function __toString() {
         $result = $this->data['scheme'] . '://';
         if (isset($this->data['user']) &&
@@ -72,29 +72,24 @@ class Uri {
             $result .= '/' . $this->data['path'];
         }
         if (isset($this->data['query'])) {
-            $queryString
-            if (is_string($this->data['query'])) {
-                $queryString = $this->data['query'];
-            } else {
-                $queryString = http_build_query($this->data['query']);
+            $queryString = is_string($this->data['query'])
+                ? $this->data['query']
+                : http_build_query($this->data['query']);
+            if (! empty($queryString)) {
+                $result .= '?' . $queryString;
             }
-            
-        } &&
-            ) {
-            
-            $result .= '?' . $this->data['query'];
         }
         if (isset($this->data['fragment'])) {
             $result .= '#' . $this->data['fragment'];
         }
-        
+
         return $result;
     }
-    
+
     public static function isDefaultPort(string $scheme, int $port) {
         return !isset(self::$defaultPorts[strtolower($scheme)]) ||
                self::$defaultPorts[$scheme] == $port;
     }
-    
-    
+
+
 }

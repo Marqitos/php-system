@@ -3,7 +3,7 @@
   * Representa un identificador unico (UUID), de 16 bytes de longitud
   *
   * @package    System
-  * @author     Marcos Porto Mariño
+  * @author     Marcos Porto Mariño <lib-system@marcospor.to>
   * @copyright  2025, Marcos Porto
   * @since      v0.4
   * @version    v0.6
@@ -35,7 +35,7 @@ class Guid {
       * Valor binario del UUID
       */
     protected $raw;
-    
+
     /**
       * Crea un UUID con un valor específico
       *
@@ -63,7 +63,7 @@ class Guid {
             throw new ArgumentOutOfRangeException('value', Resources::E_ARGUMENT_OUT_OF_RANGE_STRING_EXPECTED, $value);
         }
     }
-    
+
     /**
       * Obtiene un UUID vacío
       *
@@ -72,7 +72,7 @@ class Guid {
     public static function getEmpty() : Guid {
         return new self(str_repeat(chr(0), 16));
     }
-    
+
     /**
       * Intenta crear un UUID a partir de una valor
       *
@@ -95,7 +95,7 @@ class Guid {
             }
         }
     }
-    
+
     /**
       * Devuelve un nuevo UUID con un valor aleatorio
       *
@@ -104,7 +104,7 @@ class Guid {
     public static function newGuid() : Guid {
         return new self(random_bytes(16));
     }
-    
+
     /**
       * Devuelve si el contenido de System\Guid es vacío, o es null
       *
@@ -115,7 +115,7 @@ class Guid {
         return $id === null ||
             $id->raw == str_repeat(chr(0), 16);
     }
-    
+
     /**
       * Obtiene el valor como una cadena hexadecimal, de 32 caracteres de longitud, toda en mayusculas
       *
@@ -128,7 +128,7 @@ class Guid {
         }
         return strtoupper($cadena);
     }
-    
+
     /**
       * Devuelve la representación como cadena que representa el UUID
       *
@@ -138,7 +138,7 @@ class Guid {
         $cadena = $this->getHex();
         return substr($cadena, 6, 2) . substr($cadena, 4, 2) . substr($cadena, 2, 2) . substr($cadena, 0, 2) . '-' . substr($cadena, 10, 2) . substr($cadena, 8, 2) . '-' . substr($cadena, 12, 4) . '-' . substr($cadena, 16, 4) . '-' . substr($cadena, 20);
     }
-    
+
     /**
       * Obtiene el valor como una cadena binaria, de 16 caracteres de longitud
       *
@@ -147,7 +147,7 @@ class Guid {
     public function getRaw() : string {
         return $this->raw;
     }
-    
+
     /**
       * Obtiene si el elemento actual representa un UUID vacío
       *
@@ -156,7 +156,7 @@ class Guid {
     public function getIsEmpty() : bool {
         return $this->raw == str_repeat(chr(0), 16);
     }
-    
+
     /**
       * Devuelve los datos en binario a partir de una cadena UUID
       *

@@ -1,35 +1,35 @@
 <?php declare(strict_types = 1);
 /**
-  * Excepción producida poar una llamada a una función de PCRE (Perl-Compatible Regular Expressions)
+  * Excepción producida por una llamada a una función de codificación o decodificación JSON
   * que ha producido un error.
   *
   * @package    System
-  * @author     Marcos Porto Mariño
-  * @copyright  2025, Marcos Porto <lib-system@marcospor.to>
+  * @author     Marcos Porto Mariño <lib-system@marcospor.to>
+  * @copyright  2025, Marcos Porto
   * @since      v0.6
   */
 
 namespace System\Text\RegularExpressions;
 
 use System\LastErrorException;
-use function preg_last_error;
-use function preg_last_error_msg;
-use const PREG_NO_ERROR;
+use function json_last_error;
+use function json_last_error_msg;
+use const JSON_ERROR_NONE;
 
 require_once 'System/LastErrorException.php';
 
-class PregException extends LastErrorException {
+class JsonException extends LastErrorException {
 
-    protected function __construct(int $code, string $message) {
+    protected function __construct(int $code, ?string $message) {
         if ($message === null) {
-            $message = preg_last_error_msg();
+            $message = json_last_error_msg();
         }
         parent::__construct($message, $code);
     }
 
     public static function validateLastError() {
-        $code = preg_last_error();
-        if ($code == PREG_NO_ERROR) {
+        $code = json_last_error();
+        if ($code == JSON_ERROR_NONE) {
             return;
         }
         $message = self::getLastErrorMsg($code);
@@ -38,7 +38,7 @@ class PregException extends LastErrorException {
 
     public static function getLastErrorMsg(int $code) {
         // TODO: Ofrecer una alternativa localizada
-        return preg_last_error_msg();
+        return json_last_error_msg();
     }
 
 }

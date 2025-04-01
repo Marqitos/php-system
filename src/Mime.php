@@ -3,7 +3,7 @@
   * Proporciona métodos para asociar mime/type, con extensiones de archivos
   *
   * @package    System
-  * @author     Marcos Porto Mariño
+  * @author     Marcos Porto Mariño <lib-system@marcospor.to>
   * @copyright  2025, Marcos Porto
   * @since      v0.6
   */
@@ -22,7 +22,7 @@ use function unserialize;
 /**
   * Proporciona métodos para asociar mime/type, con extensiones de archivos
   */
-static class Mime {
+class Mime {
 
     // Función original de https://github.com/dmsmidt/mime2ext/blob/master/mime2ext.php
     /**
@@ -37,18 +37,18 @@ static class Mime {
         if ($ext = array_search($mimeType, $mimes, true)) {
             return $ext;
         }
-      
+
         foreach ($mimes as $ext => $mimeArray) {
             if (is_array($mimeArray) &&
                 in_array($mimeType, $mimeArray)) {
                 return $ext;
             }
         }
-      
+
         return false;
     }
 
-    public static mime2exts(string $mimeType) : Generator {
+    public static function mime2exts (string $mimeType) : Generator {
         $mimes = unserialize(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'mimes.ser'));
 
         foreach ($mimes as $ext => $mimeArray) {
@@ -57,7 +57,7 @@ static class Mime {
                     yield $ext;
             }
         }
-      
+
     }
 
     public static function ext2mime(string $extension) : string|false {
@@ -70,24 +70,24 @@ static class Mime {
             if (is_string($mimeArray)) {
                 return $mimeArray;
             } elseif (is_array($mimeArray) &&
-                count($mimeArray) > 0) {
+                      ! empty($mimeArray)) {
                 return $mimeArray[0];
-            } 
+            }
         }
 
         return false;
     }
 
-    public static mime2exts(string $mimeType) : Generator {
+    public static function mime2exts(string $mimeType) : Generator {
         $mimes = unserialize(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'mimes.ser'));
 
         foreach ($mimes as $ext => $mimeArray) {
-            if (strcasecmp($ext, $extension)) {
+            if (strcasecmp($ext, $mimeType)) {
                 if (is_string($mimeArray)) {
                     yield $mimeArray;
                 } elseif (is_array($mimeArray)) {
                     yield from $mimeArray;
-                } 
+                }
             }
         }
     }
