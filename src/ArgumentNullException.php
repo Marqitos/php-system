@@ -57,5 +57,5 @@ class ArgumentNullException extends ArgumentException {
         }
         return $value[$key];
     }
-    
+
 }

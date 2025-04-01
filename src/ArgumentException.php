@@ -26,7 +26,7 @@ require_once 'System/Localization/Resources.php';
   */
 class ArgumentException extends InvalidArgumentException {
 
-    public function __construct(private string $paramName, string $message = Resources::E_ARGUMENT_EXCEPTION, int $code = HResults::COR_E_ARGUMENT, Throwable $previous = null) {
+    public function __construct(private string $paramName, string $message = Resources::E_ARGUMENT_EXCEPTION, int $code = HResults::COR_E_ARGUMENT, ?Throwable $previous = null) {
         parent::__construct($message, $code, $previous);
     }
 

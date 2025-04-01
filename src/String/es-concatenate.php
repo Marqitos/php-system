@@ -1,12 +1,12 @@
 <?php declare(strict_types = 1);
 /**
- * Concatena varios mensajes en una solo texto
- *
- * @package System
- * @author Marcos Porto
- * @copyright Marcos Porto
- * @since v0.5
- */
+  * Concatena varios mensajes en una solo texto
+  *
+  * @package    System
+  * @author     Marcos Porto Mariño
+  * @copyright  2025, Marcos Porto <lib-system@marcospor.to>
+  * @since      v0.5
+  */
 
 namespace System\String;
 
@@ -24,7 +24,7 @@ function concatenate(array $messages) : string {
             $and        = substr($end, 0, 1) == 'i'
                         ? Resources::AND[1]
                         : Resources::AND[0];
-            $message = implode(', ', $messages) . $and . $end;
+            $message    = implode(', ', $messages) . $and . $end;
         }
     }
 

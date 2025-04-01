@@ -14,12 +14,12 @@ require_once 'Size.php';
  * Almacena un conjunto de cuatro números que representan la posición y el tamaño de un rectángulo.
  */
 class Rectangle {
-    
+
     public function __construct(
         private Point $location,
         private Size $size
     ) {}
-    
+
     public function getLocation() {
         return $this->location;
     }
@@ -38,7 +38,7 @@ class Rectangle {
     public function getHeight() {
         return $this->size->height;
     }
-    
+
     public function getLeft() {
         return $this->size->width < 0
             ? $this->location->x + $this->size->width
@@ -59,13 +59,13 @@ class Rectangle {
             ? $this->location->y
             : $this->location->y + $this->size->height;
     }
-    
+
     public static function fromLTRB($left, $top, $right, $bottom) {
         $point = new Point($left, $top);
         $size = new Size($right - $left, $bottom - $top);
         return new self($point, $size);
     }
-    
+
     public static function union(Rectangle $a, Rectangle $b) {
         return self::fromLTRB(
             min($a->getLeft(), $b->getLeft()),
@@ -74,5 +74,5 @@ class Rectangle {
             max($a->getBottom(), $b->getBottom())
         );
     }
-    
+
 }

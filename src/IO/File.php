@@ -50,7 +50,7 @@ abstract class File {
     public static function isGoodTmpDir($dir) {
         return is_readable($dir) && is_writable($dir);
     }
-    
+
     public static function getExtension($filename) {
         $extPos = strrpos($filename, '.');
         return ($extPos === false)

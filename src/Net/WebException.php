@@ -1,15 +1,16 @@
 <?php declare(strict_types = 1);
 /**
- * Excepción que se produce cuando ocurre un error al acceder a la red mediante un protocolo acoplable.
- *
- * @package System
- * @author Marcos Porto
- * @copyright Marcos Porto
- * @since v0.1
- */
+  * Excepción que se produce cuando ocurre un error al acceder a la red mediante un protocolo acoplable.
+  *
+  * @package    Kansas
+  * @author     Marcos Porto Mariño
+  * @copyright  2025, Marcos Porto <lib-kansas@marcospor.to>
+  * @since      v0.1
+  */
 
 namespace System\Net;
 
+use Psr\Http\Message\StatusCodeInterface;
 use System\Collections\KeyNotFoundException;
 use System\InvalidOperationException;
 use System\Localization\Resources;
@@ -17,24 +18,25 @@ use System\Localization\Resources;
 use function sprintf;
 
 require_once 'System/InvalidOperationException.php';
+require_once 'Psr/Http/Message/StatusCodeInterface.php';
 
 /**
- * Excepción que se produce cuando ocurre un error al acceder a la red mediante un protocolo acoplable.
- */
-class WebException extends InvalidOperationException {
-    
+  * Excepción que se produce cuando ocurre un error al acceder a la red mediante un protocolo acoplable.
+  */
+class WebException extends InvalidOperationException implements StatusCodeInterface {
+
     public function __construct(
         private int $status,
-        string $message = null
+        ?string $message = null
     ) {
         if($message == null) {
             $message = isset(Resources::WEB_EXCEPTION_MESSAGES[$this->status])
                 ? Resources::WEB_EXCEPTION_MESSAGES[$this->status]
-                : Resources::WEB_EXCEPTION_MESSAGES[500];
+                : Resources::WEB_EXCEPTION_MESSAGES[self::STATUS_INTERNAL_SERVER_ERROR];
         }
         parent::__construct($message);
     }
-    
+
     public function getStatus() : int {
         return $this->status;
     }
@@ -53,5 +55,5 @@ class WebException extends InvalidOperationException {
         require_once 'System/Collections/KeyNotFoundException.php';
         throw new KeyNotFoundException(sprintf(Resources::KEY_NOT_FOUND_EXCEPTION_NO_HTTP_FORMAT, $code));
     }
-    
-  }
+
+}

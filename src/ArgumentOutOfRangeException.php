@@ -32,7 +32,7 @@ require_once 'ArgumentException.php';
  */
 class ArgumentOutOfRangeException extends ArgumentException {
 
-    public function __construct(string $paramName, $message = null, protected $actualValue = null, $code = null, Throwable $previous = null) {
+    public function __construct(string $paramName, $message = null, protected $actualValue = null, $code = null, ?Throwable $previous = null) {
         require_once 'System/String/isNullOrEmpty.php';
         if(!is_string($message) || StringIsNullOrEmpty($message)) {
             require_once 'System/Localization/Resources.php';
@@ -49,7 +49,7 @@ class ArgumentOutOfRangeException extends ArgumentException {
         }
         parent::__construct($paramName, $message, $code, $previous);
     }
-    
+
     /**
      * Obtiene el valor del parametro
      *
@@ -67,5 +67,5 @@ class ArgumentOutOfRangeException extends ArgumentException {
     public function getTypeValue() : string {
         return gettype($this->actualValue);
     }
-    
+
 }

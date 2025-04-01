@@ -1,12 +1,12 @@
 <?php declare(strict_types = 1);
 /**
- * Representa una excepción que es lanzada cuando se intenta subir un archivo.
- *
- * @package System
- * @author Marcos Porto
- * @copyright Marcos Porto
- * @since v0.4
- */
+  * Representa una excepción que es lanzada cuando se intenta subir un archivo.
+  *
+  * @package    System
+  * @author     Marcos Porto Mariño
+  * @copyright  2025, Marcos Porto <lib-system@marcospor.to>
+  * @since      v0.4
+  */
 
 namespace System\IO;
 
@@ -17,12 +17,12 @@ use const UPLOAD_ERR_CANT_WRITE;
 
 require_once 'System/IO/IOException.php';
 
-/*
- * Excepción que es lanzada cuando se intenta subir un archivo.
- */
+/**
+  * Excepción que es lanzada cuando se intenta subir un archivo.
+  */
 class FileUploadException extends IOException {
 
-    public function __construct(int $uploadError, $message = null) {
+    public function __construct(int $uploadError, ?string $message = null) {
         if($message === null) {
             require_once 'System/Localization/Resources.php';
             $message = Resources::UPLOAD_ERROR_MESSAGES[$uploadError];

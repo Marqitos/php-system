@@ -6,7 +6,7 @@ namespace System\Drawing;
  * Representa un par ordenado de coordenadas x e y que define un punto en un plano bidimensional.
  */
 class Point {
-    
+
     /**
      * Crea un nuevo punto
      *
@@ -17,7 +17,7 @@ class Point {
         public $x,
         public $y
     ) {}
-    
+
     /**
      * Obtiene un valor que indica si este punto está vacío.
      *
@@ -26,5 +26,5 @@ class Point {
     public function getIsEmpty() {
         return $this->x == 0 && $this->y == 0;
     }
-    
+
 }

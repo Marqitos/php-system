@@ -1,14 +1,14 @@
 <?php declare(strict_types = 1);
 /**
- * Remplaza los marcadores de posición de una cadena por los valores con la misma clave del contexto
- *
- * Description. Los valores del contexto deben se cadenas, u objetos con la funcion __toString()
- *
- * @package System
- * @author Marcos Porto
- * @copyright Marcos Porto Mariño
- * @since v0.5
- */
+  * Remplaza los marcadores de posición de una cadena por los valores con la misma clave del contexto
+  *
+  * Description. Los valores del contexto deben se cadenas, u objetos con la funcion __toString()
+  *
+  * @package    System
+  * @author     Marcos Porto Mariño
+  * @copyright  2025, Marcos Porto <lib-system@marcospor.to>
+  * @since      v0.5
+  */
 
 namespace System\String;
 
@@ -20,7 +20,9 @@ function interpolate(string $message, array $context = []) : string {
     $replace = [];
     foreach ($context as $key => $val) {
         // Comprobamos que el valor se puede convertir a cadena
-        if (!is_array($val) && (!is_object($val) || method_exists($val, '__toString'))) {
+        if (! is_array($val) &&
+            (! is_object($val) ||
+             method_exists($val, '__toString'))) {
             $replace['{' . $key . '}'] = $val;
         }
     }

@@ -12,10 +12,10 @@ require_once 'System/Localization/Resources.php';
 /**
   * Excepción que es lanzada cuando se produce un error de E/S.
   */
- class IOException extends Exception {
-    
-    public function __construct($message = Resources::IO_EXCEPTION_DEFAULT_MESSAGE, $code = HResults::COR_E_IO) {
+class IOException extends Exception {
+
+    public function __construct(string $message = Resources::IO_EXCEPTION_DEFAULT_MESSAGE, int $code = HResults::COR_E_IO) {
         parent::__construct($message, $code);
     }
-    
+
 }

@@ -3,7 +3,7 @@
   * Representa una excepción, que se lanza cuando una acción no es soportada por un objeto
   *
   * @package    System
-  * @author     Marcos Porto Mariño
+  * @author     Marcos Porto Mariño <lib-system@marcospor.to>
   * @copyright  2025, Marcos Porto
   * @since      v0.4
   */
@@ -30,5 +30,5 @@ class NotSupportedException extends RuntimeException {
     public static function notValidEnvironment(string $status) {
         throw new self(sprintf(Resources::NOT_SUPPORTED_EXCEPTION_NO_ENVIRONMENT_FORMAT, $status));
     }
-    
+
 }
