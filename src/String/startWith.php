@@ -1,23 +1,24 @@
 <?php declare(strict_types = 1);
 /**
- * Determina si el principio de una cadena coincide con una cadena especificada.
- *
- * Description. Determina si el principio de una cadena coincide con una cadena especificada, 
- * opcionalmente puede ignorar distinciones entre minusculas y mayusculas.
- *
- * @package System
- * @author Marcos Porto
- * @copyright Marcos Porto Mariño
- * @since v0.1
- * PHP 5 >= 5.3.0, PHP 7
- */
+  * Determina si el principio de una cadena coincide con una cadena especificada.
+  *
+  * Description. Determina si el principio de una cadena coincide con una cadena especificada,
+  * opcionalmente puede ignorar distinciones entre minusculas y mayusculas.
+  *
+  * @package    System
+  * @author     Marcos Porto Mariño <lib-system@marcospor.to>
+  * @copyright  2025, Marcos Porto
+  * @since      v0.1
+  */
 
 namespace System\String;
 
+use function function_exists;
 use function mb_stripos;
 use function mb_strpos;
 use function stripos;
 use function strpos;
+use function str_starts_with;
 
 /**
 * Determina si el principio de una cadena coincide con una cadena especificada.
@@ -33,7 +34,11 @@ function startWith(string $haystack, string $needle, $ignoreCase = false) : bool
             ? mb_stripos($haystack, $needle) === 0
             : stripos($haystack, $needle) === 0;
     }
-    return function_exists('mb_strpos')
-        ? mb_strpos($haystack, $needle) === 0
-        : strpos($haystack, $needle) === 0;
+    if (function_exists('str_starts_with')) {
+        return str_starts_with($haystack, $needle);
+    } else {
+        return function_exists('mb_strpos')
+            ? mb_strpos($haystack, $needle) === 0
+            : strpos($haystack, $needle) === 0;
+    }
 }

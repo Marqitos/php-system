@@ -3,7 +3,7 @@
   * Listado de codigos de error, basado en la API de Win32
   *
   * @package    System
-  * @author     Marcos Porto Mariño
+  * @author     Marcos Porto Mariño <lib-system@marcospor.to>
   * @copyright  2025, Marcos Porto
   * @since      v0.1
   */
