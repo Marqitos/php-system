@@ -3,7 +3,7 @@
   * Representa uno o más errores que se producen durante la ejecución de una aplicación.
   *
   * @package    System
-  * @author     Marcos Porto Mariño
+  * @author     Marcos Porto Mariño <lib-system@marcospor.to>
   * @copyright  2025, Marcos Porto
   * @since      v0.5
   * @version    v0.6

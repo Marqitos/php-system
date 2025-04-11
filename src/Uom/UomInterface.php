@@ -1,15 +1,14 @@
 <?php
 /**
- * Unidad de almacenamiento
- *
- * Description. Define unidades de almacenamiento
- *
- * @package System
- * @author Marcos Porto
- * @copyright Marcos Porto Mariño
- * @since v0.1
- * PHP 5 >= 5.3.0, PHP 7
- */
+  * Unidad de almacenamiento
+  *
+  * Description. Define unidades de almacenamiento
+  *
+  * @package    System
+  * @author     Marcos Porto Mariño <lib-system@marcospor.to>
+  * @copyright  2025, Marcos Porto
+  * @since      v0.1
+  */
 namespace System\Uom;
 
 /**

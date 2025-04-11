@@ -11,7 +11,7 @@ require_once 'System/Guid.php';
 
 /**
  * Comprueba que el valor en un array es GUID, en caso contrario lanza un error.
- * 
+ *
  * @param array $self Array donde buscar el elemento;
  * @param mixed $key Clave donde se debe buscar el GUID
  * @throws ArgumentNullException Si el valor encontrado es null o Guid::Empty

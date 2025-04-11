@@ -21,14 +21,15 @@ use function strpos;
 use function str_starts_with;
 
 /**
-* Determina si el principio de una cadena coincide con una cadena especificada.
-*
-* @param string $haystack (pajar) Cadena completa
-* @param string $needle (aguja) Cadena a comparar
-* @param boolean $ignoreCase Si true, ignora distinciones entre mayusculas y minusculas, por defecto false;
-* @return boolean Es true si value coincide con el principio de esta cadena; en caso contrario, es false.
-*/
-function startWith(string $haystack, string $needle, $ignoreCase = false) : bool {
+  * Determina si el principio de una cadena coincide con una cadena especificada.
+  *
+  * @param  string  $haystack   (pajar) Cadena completa
+  * @param  string  $needle     (aguja) Cadena a comparar
+  * @param  boolean $ignoreCase (Opcional) Si true, ignora distinciones entre mayusculas y minusculas, por defecto false;
+  * @return boolean             Es true si value coincide con el principio de esta cadena; en caso contrario, es false.
+  */
+#[Deprecated]
+function startWith(string $haystack, string $needle, bool $ignoreCase = false): bool {
     if($ignoreCase) {
         return function_exists('mb_stripos')
             ? mb_stripos($haystack, $needle) === 0

@@ -5,7 +5,7 @@
   * @package    System
   * @author     Marcos Porto Mariño <lib-system@marcospor.to>
   * @copyright  2025, Marcos Porto
-  * @since v0.5
+  * @since      v0.5
   */
 
 namespace System;

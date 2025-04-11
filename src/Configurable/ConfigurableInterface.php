@@ -1,12 +1,12 @@
 <?php declare(strict_types = 1);
 /**
- * Representa un objeto con opciones de configuración
- *
- * @package System
- * @author Marcos Porto
- * @copyright 2021, Marcos Porto
- * @since v0.4
- */
+  * Representa un objeto con opciones de configuración
+  *
+  * @package    System
+  * @author     Marcos Porto Mariño <lib-system@marcospor.to>
+  * @copyright  2025, Marcos Porto
+  * @since      v0.4
+  */
 
 namespace System\Configurable;
 

@@ -1,15 +1,14 @@
 <?php declare(strict_types = 1);
 /**
- * Unidad de almacenamiento de bytes
- *
- * Description. Representa un tamaño en bytes
- *
- * @package System
- * @author Marcos Porto
- * @copyright Marcos Porto Mariño
- * @since v0.1
- * PHP 5 >= 5.3.0, PHP 7
- */
+  * Unidad de almacenamiento de bytes
+  *
+  * Description. Representa un tamaño en bytes
+  *
+  * @package    System
+  * @author     Marcos Porto Mariño
+  * @copyright  2025, Marcos Porto <lib-system@marcospor.to>
+  * @since      v0.1
+  */
 namespace System\Uom;
 
 use System\Uom\UomInterface;
