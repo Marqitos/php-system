@@ -1,2 +1,2 @@
-Commit: 53368ea
+Commit: f78995d
 Version: 0.6

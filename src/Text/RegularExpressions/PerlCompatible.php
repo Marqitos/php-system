@@ -15,6 +15,7 @@ use function preg_grep;
 use function preg_match;
 use function preg_match_all;
 use function preg_quote;
+use function preg_replace;
 use const PREG_GREP_INVERT;
 use const PREG_OFFSET_CAPTURE;
 
@@ -41,13 +42,15 @@ class PerlCompatible {
     }
 
     /**
-     * Devuelve la primera coincidencia de la cadena de entrada
-     *
-     * @param string $subject La cadena de entrada.
-     * @param integer $offsetCapture
-     * @param integer $offset
-     * @return array Devuelve los resultados de la búsqueda. [0] contendrá el texto que coincidió con el patrón completo, [1] tendrá el texto que coincidió con el primer sub-patrón entre paréntesis capturado, y así sucesivamente.
-     */
+      * Devuelve la primera coincidencia de la cadena de entrada
+      *
+      * @param  string  $subject La cadena de entrada.
+      * @param  integer $offsetCapture
+      * @param  integer $offset
+      * @throws PregException       En caso de error al procesar la expresión regular
+      * @throws LogicException      Si no se ha procesaro la expresión regular, y PREG no devuelve ningún error
+      * @return array               Devuelve los resultados de la búsqueda. [0] contendrá el texto que coincidió con el patrón completo, [1] tendrá el texto que coincidió con el primer sub-patrón entre paréntesis capturado, y así sucesivamente.
+      */
     public function match(string $subject, bool $offsetCapture = false, int $offset = 0) : array {
         $matches = [];
         $flags = $offsetCapture ? PREG_OFFSET_CAPTURE : 0;
@@ -70,13 +73,15 @@ class PerlCompatible {
     }
 
     /**
-     * Divide un string mediante una expresión regular
-     *
-     * @param string $subject string a dividir
-     * @param integer $limit Si se especifica, son devueltos únicamente los substrings hasta limit, con el resto del string colocado en el último substring. Si limit vale -1 o 0 significa "sin límite".
-     * @param integer $flags Si se especifica, puede ser la combinación de las flags PREG_SPLIT_NO_EMPTY, PREG_SPLIT_DELIM_CAPTURE, PREG_SPLIT_OFFSET_CAPTURE
-     * @return array
-     */
+      * Divide un string mediante una expresión regular
+      *
+      * @param  string  $subject    El &string; a dividir
+      * @param  integer $limit      Si se especifica, son devueltos únicamente los substrings hasta limit, con el resto del string colocado en el último substring. Si limit vale -1 o 0 significa "sin límite".
+      * @param  integer $flags      Si se especifica, puede ser la combinación de las flags PREG_SPLIT_NO_EMPTY, PREG_SPLIT_DELIM_CAPTURE, PREG_SPLIT_OFFSET_CAPTURE
+      * @throws PregException       En caso de error al procesar la expresión regular
+      * @throws LogicException      Si no se ha procesaro la expresión regular, y PREG no devuelve ningún error
+      * @return array
+      */
     public function split(string $subject, int $limit = -1, int $flags = 0) : array {
         $matches = preg_split($this->pattern, $subject, $limit, $flags);
         if ($matches === false) {
@@ -85,6 +90,16 @@ class PerlCompatible {
             throw new LogicException();
         }
         return $matches;
+    }
+
+    public function replace(string|array $replacement, string|array $subject,int $limit = -1,int &$count = null): string|array {
+        $result = \preg_replace($this->pattern, $replacement, $subject, $limit, $count);
+        if ($result === null) {
+            require_once 'System/Text/RegularExpressions/PregException.php';
+            PregException::validate();
+            throw new LogicException();
+        }
+        return $result;
     }
 
 }
