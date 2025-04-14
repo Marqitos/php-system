@@ -76,13 +76,13 @@ class Byte implements UomInterface{
     public function __toString() {
         $q = $this->quantity;
         $m = 0;
-        if($this->multiplos == 'ISO') {
+        if ($this->multiplos == 'ISO') {
             while($q > 1000) {
                 $q /= 1024; // ISO
                 $m++;
             }
         }
-        if($m == 0) {
+        if ($m == 0) {
             return sprintf("%d", $q) . ' ' . self::SI_UNITS[$m];
         }
         return sprintf("%01.2f", $q) . ' ' . self::SI_UNITS[$m];
