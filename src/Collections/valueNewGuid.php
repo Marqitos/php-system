@@ -25,7 +25,7 @@ function valueNewGuid(array $self, $key) {
         require_once 'System/ArgumentOutOfRangeException.php';
         throw new ArgumentOutOfRangeException($key);
     }
-    if(Guid::isEmpty($id)) {
+    if (Guid::isEmpty($id)) {
         $id = Guid::NewGuid();
     }
     return $id->getHex();

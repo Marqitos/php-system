@@ -34,16 +34,16 @@ class ArgumentOutOfRangeException extends ArgumentException {
 
     public function __construct(string $paramName, $message = null, protected $actualValue = null, $code = null, ?Throwable $previous = null) {
         require_once 'System/String/isNullOrEmpty.php';
-        if(!is_string($message) || StringIsNullOrEmpty($message)) {
+        if (! is_string($message) || StringIsNullOrEmpty($message)) {
             require_once 'System/Localization/Resources.php';
             $message = Resources::E_ARGUMENT_OUT_OF_RANGE;
         }
-        if (!is_int($code) &&
+        if (! is_int($code) &&
             !is_object($code) &&
             !is_null($code)) {
             $code = intval($code);
         }
-        if(is_object($code) || is_null($code) || $code == 0) {
+        if (is_object($code) || is_null($code) || $code == 0) {
             require_once 'System/HResults.php';
             $code = HResults::COR_E_ARGUMENTOUTOFRANGE;
         }

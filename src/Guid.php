@@ -43,8 +43,8 @@ class Guid {
       * @throws ArgumentOutOfRangeException
       */
     public function __construct(Guid|string $value) {
-        if(is_string($value)) {
-            if(strlen($value) == 16) {
+        if (is_string($value)) {
+            if (strlen($value) == 16) {
                 $this->raw = $value;
             } else {
                 try {
@@ -55,7 +55,7 @@ class Guid {
                     throw new ArgumentOutOfRangeException('value', Resources::E_ARGUMENT_OUT_OF_RANGE_GUID_STRING_EXPECTED, $value, null, $e);
                 }
             }
-        } elseif($value instanceof Guid) {
+        } elseif ($value instanceof Guid) {
             $this->raw = $value->getRaw();
         } else {
             require_once ARGUMENT_OUT_OF_RANGE_EXCEPTION_FILE;
@@ -82,7 +82,7 @@ class Guid {
       * @return bool True en caso de exito
       */
     public static function tryParse($value, &$guid) : bool {
-        if($value instanceof Guid) {
+        if ($value instanceof Guid) {
             $guid = $value;
             return true;
         } else {

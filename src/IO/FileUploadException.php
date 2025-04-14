@@ -23,7 +23,7 @@ require_once 'System/IO/IOException.php';
 class FileUploadException extends IOException {
 
     public function __construct(int $uploadError, ?string $message = null) {
-        if($message === null) {
+        if ($message === null) {
             require_once 'System/Localization/Resources.php';
             $message = Resources::UPLOAD_ERROR_MESSAGES[$uploadError];
         }

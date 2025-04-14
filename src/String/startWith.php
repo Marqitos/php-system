@@ -30,7 +30,7 @@ use function str_starts_with;
   */
 #[Deprecated]
 function startWith(string $haystack, string $needle, bool $ignoreCase = false): bool {
-    if($ignoreCase) {
+    if ($ignoreCase) {
         return function_exists('mb_stripos')
             ? mb_stripos($haystack, $needle) === 0
             : stripos($haystack, $needle) === 0;

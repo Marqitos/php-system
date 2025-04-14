@@ -36,7 +36,7 @@ class FileSystem extends File {
       * @return string          Contenido del archivo (o false en caso de error)
       */
     public function read($mode = 'rb') {
-        if (!is_file($this->filename)) {
+        if (! is_file($this->filename)) {
             return false;
         }
         $result = false;

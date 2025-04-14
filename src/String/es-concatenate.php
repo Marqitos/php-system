@@ -16,8 +16,8 @@ require_once 'System/Localization/Resources.php';
 
 function concatenate(array $messages) : string {
     $message    = '';
-    if(!empty($messages)) {
-        if(count($messages) == 1) {
+    if (! empty($messages)) {
+        if (count($messages) == 1) {
             $message = array_shift($messages);
         } else {
             $end        = array_pop($messages);

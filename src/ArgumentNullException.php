@@ -36,7 +36,7 @@ class ArgumentNullException extends ArgumentException {
      * @throws ArgumentNullException En caso de que $value sea null
      */
     public static function validate(string $paramName, $value) {
-        if($value === null) {
+        if ($value === null) {
             throw new self($paramName);
         }
     }
@@ -51,7 +51,7 @@ class ArgumentNullException extends ArgumentException {
      * @throws ArgumentNullException En caso de que $value[$key] sea null
      */
     public static function validateArray(string $paramName, array $value, $key) {
-        if(isset($value[$key]) ||
+        if (isset($value[$key]) ||
            $value[$key] === null ) {
             throw new self($paramName . '[' . $key . ']');
         }

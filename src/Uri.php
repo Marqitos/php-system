@@ -36,15 +36,15 @@ class Uri {
     ];
 
     public function __construct(string|array|Uri $url) {
-        if(is_string($url)) {
+        if (is_string($url)) {
             $this->data = parse_url($url);
-            if(!$this->data) {
+            if (! $this->data) {
                 require_once 'ArgumentOutOfRangeException.php';
                 throw new ArgumentOutOfRangeException('url', Resources::E_ARGUMENT_OUT_OF_RANGE_URL_EXPECTED, $url);
             }
-        } elseif(is_array($url)) {
+        } elseif (is_array($url)) {
             $this->data = $url;
-        } elseif($url instanceof Uri) {
+        } elseif ($url instanceof Uri) {
             $this->data = array_merge($url->data);
         }
     }

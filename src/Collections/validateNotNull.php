@@ -13,7 +13,7 @@ use System\ArgumentNullException;
  * @return mixed Valor almacenado en el array
  */
 function validateNotNull(array $self, $key) {
-    if(!isset($self[$key]) || $self[$key] === null) {
+    if (! isset($self[$key]) || $self[$key] === null) {
         require_once 'System/ArgumentNullException.php';
         throw new ArgumentNullException($key);
     }

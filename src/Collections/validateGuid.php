@@ -27,7 +27,7 @@ function validateGuid(array $self, $key) : string {
         require_once 'System/ArgumentOutOfRangeException.php';
         throw new ArgumentOutOfRangeException($key, null, $code, null, $ex);
     }
-    if($id == null || Guid::isEmpty($id)) {
+    if ($id == null || Guid::isEmpty($id)) {
         require_once 'System/ArgumentNullException.php';
         throw new ArgumentNullException($key);
     }

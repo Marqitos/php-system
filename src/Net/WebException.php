@@ -29,7 +29,7 @@ class WebException extends InvalidOperationException implements StatusCodeInterf
         private int $status,
         ?string $message = null
     ) {
-        if($message == null) {
+        if ($message == null) {
             $message = isset(Resources::WEB_EXCEPTION_MESSAGES[$this->status])
                 ? Resources::WEB_EXCEPTION_MESSAGES[$this->status]
                 : Resources::WEB_EXCEPTION_MESSAGES[self::STATUS_INTERNAL_SERVER_ERROR];
@@ -49,7 +49,7 @@ class WebException extends InvalidOperationException implements StatusCodeInterf
      * @throws KeyNotFoundException Si se especifica un código de error desconocido
      */
     public static function getCodeMessage(int $code) : string {
-        if(isset(Resources::WEB_EXCEPTION_MESSAGES[$code])) {
+        if (isset(Resources::WEB_EXCEPTION_MESSAGES[$code])) {
             return Resources::WEB_EXCEPTION_MESSAGES[$code];
         }
         require_once 'System/Collections/KeyNotFoundException.php';

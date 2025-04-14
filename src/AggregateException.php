@@ -39,7 +39,7 @@ class AggregateException extends LogicException {
       * @return int                 Código de error actualizado
       */
     protected function addError(string $message, int $code) : int {
-        if(!isset($this->errors[$code])) {
+        if (! isset($this->errors[$code])) {
             $this->code    += $code;
             $this->message .= ($this->message == '')
                             ? $message

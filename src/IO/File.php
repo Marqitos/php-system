@@ -34,7 +34,7 @@ abstract class File {
      * @return boolean
      */
     public static function isReadable($filename) {
-        if (!$fh = @fopen($filename, 'r', true)) {
+        if (! $fh = @fopen($filename, 'r', true)) {
             return false;
         }
         @fclose($fh);
@@ -75,7 +75,7 @@ abstract class File {
      * @return array
      */
     public static function explodeIncludePath($path = null) {
-        if(null === $path) {
+        if (null === $path) {
             $path = get_include_path();
         }
 
