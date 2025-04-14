@@ -13,8 +13,9 @@
 namespace System\String;
 
  /**
- * Interpola valores de contexto en los marcadores de posición del mensaje.
- */
+   * Interpola valores de contexto en los marcadores de posición del mensaje.
+   */
+#[Deprecated]
 function interpolate(string $message, array $context = []) : string {
     // Construye una matriz de reemplazo con llaves alrededor de las claves de contexto
     $replace = [];

@@ -21,6 +21,7 @@ use function trim;
   * @param string $value Cadena a comprobar
   * @return boolean Es true si la cadena está vacía.
   */
+#[Deprecated]
 function isNullOrEmpty($value) : bool {
     return !isset($value) ||
         $value === null ||

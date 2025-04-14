@@ -27,6 +27,7 @@ use function trim;
   * @throws NotImplementedException Si no existe la funcion iconv
   * @return string Cadena transformada
   */
+#[Deprecated]
 function slugify($text) {
     $text = preg_replace('~[^\\pL\d]+~u', '-', $text); // remplaza caracteres que no sean letras ni digitos por -
 
