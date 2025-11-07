@@ -1,5 +1,3 @@
-SyncToy*.dat
-
 #################
 ## Eclipse
 #################
@@ -221,3 +219,6 @@ pip-log.txt
 
 #Dreamweaver
 _notes
+
+# Composer
+/vendor/

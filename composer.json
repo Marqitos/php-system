@@ -1,0 +1,22 @@
+{
+    "name": "rodas/system",
+    "description": "Basic utility classes for PHP",
+    "type": "library",
+    "keywords": ["system"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marcos Porto Mariño",
+            "email": "php@marcospor.to"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=8.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rodas\\System\\": "src/System/"
+        }
+    }
+}
