@@ -20,3 +20,16 @@
 *.PDF	 diff=astextplain
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
+
+# Release excludes
+/.gitignore             export-ignore
+/.gitattributes         export-ignore
+/.markdownlint.json     export-ignore
+/.github/               export-ignore
+/build/                 export-ignore
+/docs/                  export-ignore
+/tests/                 export-ignore
+/phpunit.xml            export-ignore
+/phpcs.xml              export-ignore
+/phpstan.neon           export-ignore
+/phpstan-bootstrap.php  export-ignore
