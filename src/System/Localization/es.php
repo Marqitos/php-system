@@ -1,12 +1,17 @@
-<?php declare(strict_types = 1);
+<?php
 /**
-  * Contiene cadenas en español para mensajes de error y otros
-  *
-  * @package    System
-  * @author     Marcos Porto Mariño
-  * @copyright  2025, Marcos Porto
-  * @since      v0.4
-  */
+ * This file is part of the Rodas\System library
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @package Rodas\System
+ * @copyright 2025 Marcos Porto <php@marcospor.to>
+ * @license https://opensource.org/license/mit The MIT License
+ * @link https://marcospor.to/repositories/system
+ */
+
+declare(strict_types=1);
 
 namespace System\Localization;
 
@@ -18,8 +23,6 @@ use const UPLOAD_ERR_NO_FILE;
 use const UPLOAD_ERR_NO_TMP_DIR;
 use const UPLOAD_ERR_CANT_WRITE;
 use const UPLOAD_ERR_EXTENSION;
-
-require_once 'System/String/es-concatenate.php';
 
 class Resources {
 
@@ -35,10 +38,10 @@ class Resources {
     public const INVALID_OPERATION_EXCEPTION_DEFAULT_MESSAGE    = 'Se ha producido una operación no permitida';
     public const IO_EXCEPTION_DEFAULT_MESSAGE                   = 'Error E/S';
     public const KEY_NOT_FOUND_EXCEPTION_DEFAULT_MESSAGE        = 'La clave especificada no existe';
-    public const KEY_NOT_FOUND_EXCEPTION_NO_HTTP_FORMAT         = 'No se ha encontrado un codigo http con valor %s';
+    public const KEY_NOT_FOUND_EXCEPTION_NO_HTTP_FORMAT         = 'No se ha encontrado un código http con valor %s';
     public const KEY_NOT_FOUND_EXCEPTION_NO_EVENT_FORMAT        = 'No se ha definido el evento indicado (%s)';
     public const NOT_IMPLEMENTED_EXCEPTION_DEFAULT_MESSAGE      = 'Instrucción no implementada';
-    public const NOT_IMPLEMENTED_EXCEPTION_NEED_ICONV           = 'Se necesita la funcion "iconv"';
+    public const NOT_IMPLEMENTED_EXCEPTION_NEED_ICONV           = 'Se necesita la función "iconv"';
     public const NOT_SUPPORTED_EXCEPTION_DEFAULT_MESSAGE        = 'Instrucción no soportada';
     public const NOT_SUPPORTED_EXCEPTION_NO_ENVIRONMENT_FORMAT  = 'Entorno no soportado: "%s"';
     public const UPLOAD_ERROR_CANT_WRITE_TARGET_DIRECTORY_FORMAT = 'Error al escribir el archivo en el directorio destino: %s';
@@ -60,10 +63,10 @@ class Resources {
     ];
     public const UPLOAD_ERROR_MESSAGES = [
         UPLOAD_ERR_OK         => 'El archivo se ha subido correctamente.',
-        UPLOAD_ERR_INI_SIZE   => 'El archivo supera el tamaño maximo permitido por el servidor.', // php.ini
-        UPLOAD_ERR_FORM_SIZE  => 'El archivo supera el tamaño maximo permitido.', // form
+        UPLOAD_ERR_INI_SIZE   => 'El archivo supera el tamaño máximo permitido por el servidor.', // php.ini
+        UPLOAD_ERR_FORM_SIZE  => 'El archivo supera el tamaño máximo permitido.', // form
         UPLOAD_ERR_PARTIAL    => 'El archivo solo se ha subido parcialmente',
-        UPLOAD_ERR_NO_FILE    => 'No se ha subido ningun archivo',
+        UPLOAD_ERR_NO_FILE    => 'No se ha subido ningún archivo',
         UPLOAD_ERR_NO_TMP_DIR => 'No se encuentra el directorio temporal',
         UPLOAD_ERR_CANT_WRITE => 'Error al escribir el archivo en el disco',
         UPLOAD_ERR_EXTENSION  => 'Una extensión del servidor ha bloqueado la subida del archivo.',
@@ -72,6 +75,8 @@ class Resources {
         0       => " y ",
         1       => " e "];
 }
+
+require_once __DIR__ . '/../String/es-concatenate.php';
 
 global $lang;
 if (! isset($lang)) {

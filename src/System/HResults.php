@@ -1,16 +1,30 @@
-<?php declare(strict_types = 1);
+<?php
 /**
-  * Listado de codigos de error, basado en la API de Win32
-  *
-  * @package    System
-  * @author     Marcos Porto Mariño <lib-system@marcospor.to>
-  * @copyright  2025, Marcos Porto
-  * @since      v0.1
-  */
+ * This file is part of the Rodas\System library
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @package Rodas\System
+ * @copyright 2025 Marcos Porto <php@marcospor.to>
+ * @license https://opensource.org/license/mit The MIT License
+ * @link https://marcospor.to/repositories/system
+ */
+
+declare(strict_types=1);
 
 namespace System;
 
+/**
+ * List of Error Codes
+ *
+ * Based in .Net/Win32 Error Codes
+ */
 class HResults {
+    private function __construct() {
+      // Not initializable
+    }
+
     // Errores generales
     public const S_OK                       = 0x00000000; // Operación exitosa
     public const S_FALSE                    = 0x00000001; // Operación exitosa sin resultados significativos
