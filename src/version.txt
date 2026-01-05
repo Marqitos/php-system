@@ -1,2 +1,2 @@
-Commit: 7e1f23d
+Commit: 24b68a5
 Version: 0.6
