@@ -76,9 +76,9 @@ class MacroRegion extends Region {
                         if (is_string(Resources::REGIONS[$code])) {
                             $name = Resources::REGIONS[$code];
                         } elseif (is_array(Resources::REGIONS[$code]) &&
-                                isset(Resources::REGIONS[$code]['name'])) {
+                                  isset(Resources::REGIONS[$code]['name'])) {
 
-                            $name = Resources::REGIONS[$code]['type'];
+                            $name = Resources::REGIONS[$code]['name'];
                         }
                         $array[] = new $type($code, $name);
                     }
