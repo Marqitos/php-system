@@ -6,14 +6,14 @@
  * file that was distributed with this source code.
  *
  * @package Rodas\System
- * @copyright 2025 Marcos Porto <php@marcospor.to>
+ * @copyright 2026 Marcos Porto <php@marcospor.to>
  * @license https://opensource.org/license/mit The MIT License
  * @link https://marcospor.to/repositories/system
  */
 
 declare(strict_types=1);
 
-namespace System\Localization;
+namespace Rodas\System\Localization;
 
 use const UPLOAD_ERR_OK;
 use const UPLOAD_ERR_INI_SIZE;
@@ -48,7 +48,7 @@ class Resources {
     public const UPLOADED_FILE_ALREADY_MOVED_EXCEPTION_DEFAULT_MESSAGE = 'El archivo ya ha sido movido';
     public const UPLOAD_ERR_CANT_MOVE_FILE                      = 'No se ha podido mover el archivo';
     public const UPLOAD_ERROR_CANT_WRITE_TARGET_PATH            = 'No se ha podido escribir el archivo en la ruta de destino';
-    public const WEB_EXCEPTION_MESSAGES = [
+    public const HTTP_STATUS_MESSAGES = [
         304 => 'El recurso no se ha modificado desde la última solicitud.',
         400 => 'La solicitud no se puede cumplir debido a una sintaxis incorrecta',
         401 => 'Acceso no autorizado, se requieren credenciales',
@@ -74,6 +74,9 @@ class Resources {
     const AND   = [
         0       => " y ",
         1       => " e "];
+    const REGIONS = [
+        'ES'    => 'España'
+    ];
 }
 
 require_once __DIR__ . '/../String/es-concatenate.php';
