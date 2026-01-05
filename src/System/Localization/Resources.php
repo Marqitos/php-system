@@ -6,7 +6,7 @@
  * file that was distributed with this source code.
  *
  * @package Rodas\System
- * @copyright 2025 Marcos Porto <php@marcospor.to>
+ * @copyright 2026 Marcos Porto <php@marcospor.to>
  * @license https://opensource.org/license/mit The MIT License
  * @link https://marcospor.to/repositories/system
  */
@@ -20,13 +20,33 @@ if (! isset($lang) &&
     $localizationPlugin->getLocale();
 }
 if (isset($lang) &&
-    file_exists(__DIR__ . DIRECTORY_SEPARATOR . "$lang.php")) {
+    $lang instanceof 'Rodas\System\Language') {
 
-    require_once __DIR__ . DIRECTORY_SEPARATOR . "$lang.php";
+    // TODO: Improve file search
+    if ($lang->regionCode !== null &&
+        file_exists(__DIR__ . DIRECTORY_SEPARATOR . "{$lang->languageCode}-{$lang->regionCode}.php")) {
+
+        require_once __DIR__ . DIRECTORY_SEPARATOR . "{$lang->languageCode}-{$lang->regionCode}.php";
+    } elseif (file_exists(__DIR__ . DIRECTORY_SEPARATOR . "{$lang->languageCode}.php")) {
+
+        require_once __DIR__ . DIRECTORY_SEPARATOR . "{$lang->languageCode}.php";
+    } elseif (file_exists(__DIR__ . DIRECTORY_SEPARATOR . "{(string)$lang}.php")) {
+
+        require_once __DIR__ . DIRECTORY_SEPARATOR . "{(string)$lang}.php";
+    }
 } elseif (isset($lang) &&
-          strlen($lang) > 2 &&
-          file_exists(__DIR__ . DIRECTORY_SEPARATOR . substr($lang, 0, 2) . '.php')) {
-    require_once __DIR__ . DIRECTORY_SEPARATOR . substr($lang, 0, 2) . '.php';
+          is_string($lang)) {
+
+        // FIX: Use regular expression
+        $length = strpos($lang, '-');
+    if (file_exists(__DIR__ . DIRECTORY_SEPARATOR . "$lang.php")) {
+
+        require_once __DIR__ . DIRECTORY_SEPARATOR . "$lang.php";
+    } elseif (isset($lang) &&
+              $length !== false &&
+              file_exists(__DIR__ . DIRECTORY_SEPARATOR . substr($lang, 0, $length) . '.php')) {
+        require_once __DIR__ . DIRECTORY_SEPARATOR . substr($lang, 0, $length) . '.php';
+    }
 } else {
-    require_once 'es.php';
+    require_once 'en.php';
 }

@@ -1,2 +1,2 @@
-Commit: c248f35
+Commit: 8520dd6
 Version: 0.6

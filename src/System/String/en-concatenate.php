@@ -26,10 +26,7 @@ function concatenate(array $messages): string {
             $message = array_shift($messages);
         } else {
             $end        = array_pop($messages);
-            $and        = substr($end, 0, 1) == 'i'
-                        ? Resources::AND[1]
-                        : Resources::AND[0];
-            $message    = implode(', ', $messages) . $and . $end;
+            $message    = implode(', ', $messages) . Resources::AND . $end;
         }
     }
 
